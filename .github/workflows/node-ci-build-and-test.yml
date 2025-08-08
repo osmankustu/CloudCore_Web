@@ -1,4 +1,4 @@
-name: Full CI for dev Branch
+name: CI for dev Branch status and reports
 
 on:
   push:
