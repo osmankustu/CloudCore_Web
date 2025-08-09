@@ -2,7 +2,7 @@ name: ✨ Feature Request
 about: Use this template to request a new feature
 title: "[FEATURE] Brief summary"
 labels: enhancement
-assignees: ""
+assignees: []
 
 body:
   - type: markdown
@@ -11,32 +11,26 @@ body:
         ## Feature Description
         Explain what the new feature is and what it does.
 
-  - type: input
-    id: importance
+  - type: textarea
+    id: why-important
     attributes:
       label: Why Is It Important?
-      description: Describe why this feature is needed and what benefits it provides
-      placeholder: Importance of the feature
-      required: true
+      description: Describe why this feature is needed and its benefits
 
   - type: textarea
     id: use-case
     attributes:
       label: Use Case
       description: Provide an example of how this feature would be used
-      placeholder: Example scenario
-      required: true
 
   - type: textarea
     id: alternatives
     attributes:
       label: Alternatives
       description: Mention existing solutions or alternatives, if any
-      placeholder: Alternative approaches
 
   - type: textarea
     id: additional-notes
     attributes:
       label: Additional Notes
       description: Any other details or information you'd like to add
-      placeholder: Optional
