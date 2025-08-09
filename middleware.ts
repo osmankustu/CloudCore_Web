@@ -27,11 +27,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/dashboard/:path*",
-    "/account/:path*",
-    "/services/:path*",
-    "/personel-management/:path*",
-    "/customers/:path*",
-  ], // korumalı sayfalar
+  matcher: ["/management/:path*"], // korumalı sayfalar
 };
