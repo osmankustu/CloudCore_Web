@@ -5,10 +5,11 @@ import Spinner from "@/components/ui/spinner/Spinner";
 import PersonelCard from "@/features/personel/components/cards/PersonelCard";
 
 type pageProps = {
-  id: string;
+  params: { id: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-const page = ({ params }: { params: pageProps }) => {
+const page = ({ params }: pageProps) => {
   const id = params?.id;
   return (
     <div>
