@@ -4,12 +4,8 @@ import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import Spinner from "@/components/ui/spinner/Spinner";
 import PersonelCard from "@/features/personel/components/cards/PersonelCard";
 
-type PageProps = {
-  params: { id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-const page: React.FC<PageProps> = async ({ params }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const page = async ({ params }: any) => {
   const id = params.id;
   return (
     <div>
