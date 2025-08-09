@@ -1,27 +1,27 @@
----
 name: ✨ Feature Request
-about: Yeni bir özellik talep etmek için kullanılır
-title: "[FEATURE] Kısa açıklama"
+about: Use this template to request a new feature
+title: "[FEATURE] Brief summary"
 labels: enhancement
 assignees: ""
+
 ---
 
-## Özellik Açıklaması
+## Feature Description
 
-Yeni özelliğin ne işe yaradığını açıkla.
+Explain what the new feature is and what it does.
 
-## Neden Önemli?
+## Why Is It Important?
 
-Bu özelliğin neden gerekli olduğunu, faydasını anlat.
+Describe why this feature is needed and what benefits it provides.
 
-## Kullanım Senaryosu
+## Use Case
 
-Bu özelliğin nasıl kullanılacağını örnekle.
+Provide an example of how this feature would be used.
 
-## Alternatifler
+## Alternatives
 
-Eğer varsa, halihazırda yapılmış benzer çözümler veya alternatif yöntemler.
+If any, mention existing solutions or alternative approaches.
 
-## Ek Notlar
+## Additional Notes
 
-Eklemek istediğin başka detaylar.
+Any other details or information you'd like to add.

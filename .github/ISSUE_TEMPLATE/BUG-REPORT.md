@@ -1,37 +1,37 @@
----
 name: 🐞 Bug Report
-about: Bir hatayı bildirmek için kullanılır
-title: "[BUG] Kısa açıklama"
+about: Use this template to report a bug
+title: "[BUG] Brief summary"
 labels: bug
 assignees: ""
+
 ---
 
-## Açıklama
+## Description
 
-Kısaca hatanın ne olduğunu açıkla.
+Provide a concise description of the issue.
 
-## Adımlar
+## Steps to Reproduce
 
-Hatanın tekrarlanması için izlenen adımlar:
+List the steps to reproduce the bug:
 
 1. ...
 2. ...
 3. ...
 
-## Beklenen Davranış
+## Expected Behavior
 
-Ne olması gerektiğini açıkla.
+Describe what you expected to happen.
 
-## Ekran Görüntüsü / Video
+## Screenshots / Videos
 
-Varsa hatayı gösteren ekran görüntüsü veya video ekle.
+If applicable, add screenshots or videos to help explain the issue.
 
-## Ortam (Lütfen aşağıdakileri doldurun):
+## Environment (please complete the following information):
 
-- İşletim Sistemi: [örn. Windows 10, macOS Monterey]
-- Tarayıcı ve versiyon: [örn. Chrome 113, Firefox 100]
-- Uygulama versiyonu: [örn. 1.2.3]
+- Operating System: [e.g. Windows 10, macOS Monterey]
+- Browser and Version: [e.g. Chrome 113, Firefox 100]
+- Application Version: [e.g. 1.2.3]
 
-## Ek Notlar
+## Additional Notes
 
-Diğer açıklamalar veya ipuçları.
+Any other comments, tips, or relevant information.
