@@ -22,29 +22,29 @@ const navItems: NavItem[] = [
   {
     icon: <MdOutlineDashboard />,
     name: "Kontrol Paneli",
-    path: "/dashboard",
+    path: "/management",
   },
   {
     icon: <FaFileAlt />,
     name: "Servis Kayıtları",
-    path: "/services",
+    path: "/management/services",
   },
   {
     icon: <IoPersonOutline />,
-    name: "Personel Yönetimi",
-    path: "/personel-management",
+    name: "Çalışanlar",
+    path: "management/employees",
     subItems: [
-      { name: "Personeller", path: "/personel-management/personels" },
-      { name: "Ekipler", path: "/personel-management/teams" },
+      { name: "Personeller", path: "/management/employees/personels" },
+      { name: "Ekipler", path: "/management/employees/teams" },
     ],
   },
   {
     icon: <PiBuildingOffice />,
-    name: "Müşteri Yönetimi",
-    path: "customers",
+    name: "Müşteriler",
+    path: "/management/customers",
     subItems: [
-      { name: "Kurumsal", path: "/customers/corporate" },
-      { name: "Bireysel", path: "/customers/individual" },
+      { name: "Kurumsal", path: "/management/customers/corporate" },
+      { name: "Bireysel", path: "/management/customers/individual" },
     ],
   },
   {
@@ -55,7 +55,7 @@ const navItems: NavItem[] = [
   {
     icon: <IoSettingsOutline />,
     name: "Ayarlar",
-    path: "/settings",
+    path: "/management/settings",
     subItems: [
       { name: "Kullanıcı Yetkileri", path: "" },
       { name: "Hesap Ayarları", path: "" },

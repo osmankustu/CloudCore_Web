@@ -1,11 +1,12 @@
 import React, { FC } from "react";
 
-interface InputProps {
+export interface InputProps {
   type?: "text" | "number" | "email" | "password" | "date" | "time" | string;
   id?: string;
   name?: string;
   placeholder?: string;
   defaultValue?: string | number;
+  value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   min?: string;
@@ -23,6 +24,7 @@ const Input: FC<InputProps> = ({
   name,
   placeholder,
   defaultValue,
+  value,
   onChange,
   className = "",
   min,
@@ -56,6 +58,7 @@ const Input: FC<InputProps> = ({
       <input
         type={type}
         id={id}
+        value={value}
         name={name}
         placeholder={placeholder}
         defaultValue={defaultValue}
