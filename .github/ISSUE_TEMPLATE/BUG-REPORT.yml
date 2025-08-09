@@ -1,0 +1,73 @@
+name: 🐞 Bug Report
+about: Use this template to report a bug
+title: "[BUG] Brief summary"
+labels: bug
+assignees: ""
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Description
+        Provide a concise description of the issue.
+
+  - type: input
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the steps to reproduce the bug
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+      required: true
+
+  - type: input
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: Describe what you expected to happen
+      placeholder: Expected result
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / Videos
+      description: Add screenshots or videos if applicable
+      placeholder: Paste links or describe
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      description: Select the OS where the issue occurs
+      options:
+        - Windows 10
+        - Windows 11
+        - macOS Monterey
+        - macOS Ventura
+        - Linux
+        - Other
+      required: true
+
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser and Version
+      description: e.g. Chrome 113, Firefox 100
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: Application Version
+      description: e.g. 1.2.3
+      required: true
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Any other relevant info or tips
+      placeholder: Optional
