@@ -9,8 +9,8 @@ type PageProps = {
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-const page = async ({ params }: PageProps) => {
-  const id = params?.id;
+const page: React.FC<PageProps> = async ({ params }) => {
+  const id = params.id;
   return (
     <div>
       <PageBreadcrumb pageTitle="Personel Bilgileri" />
