@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
@@ -44,9 +44,6 @@ const PersonelInfoEditForm = ({ isOpen, onClose }: { isOpen: boolean; onClose: (
 
     clearErrors?.(); // varsa çağır
   }, [personel, isOpen]);
-
-  const birthDate = useMemo(() => new Date(personel!.birthDate), [personel?.birthDate]);
-  const hireDate = useMemo(() => new Date(personel!.hireDate), [personel?.hireDate]);
 
   const handleSave = async () => {
     // Handle save logic here
@@ -137,7 +134,7 @@ const PersonelInfoEditForm = ({ isOpen, onClose }: { isOpen: boolean; onClose: (
                     <PersonelDatePicker
                       text={"Doğum Tarihi"}
                       onSelected={value => setUpdateField("birthDate", value)}
-                      defaultValue={new Date(birthDate)}
+                      defaultValue={new Date(personel!.birthDate)}
                     />
                   </div>
 
@@ -145,7 +142,7 @@ const PersonelInfoEditForm = ({ isOpen, onClose }: { isOpen: boolean; onClose: (
                     <PersonelDatePicker
                       text={"İşe Giriş Tarihi"}
                       onSelected={value => setUpdateField("hireDate", value)}
-                      defaultValue={new Date(hireDate)}
+                      defaultValue={new Date(personel!.hireDate)}
                     />
                   </div>
 

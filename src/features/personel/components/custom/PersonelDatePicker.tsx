@@ -31,7 +31,7 @@ export const PersonelDatePicker = ({ text, defaultValue, onSelected }: PersonelD
     if (defaultValue) {
       onSelected(defaultValue.toISOString());
     }
-  });
+  }, []);
 
   const handleSelectDate = (date: Date | null | undefined) => {
     setSelectedDate(date!);
