@@ -14,7 +14,7 @@ import { formatDate } from "@/core/utils/dateFormater";
 import { showSuccess } from "@/core/utils/toastHelper";
 
 import { PersonelModel } from "../../model/personel";
-import { DeletePersonel } from "../../service/PersonelService";
+import { DeletePersonel } from "../../service/personelService";
 
 const PersonelMetaCard = ({
   personel,
