@@ -1,64 +1,48 @@
 name: 🐞 Bug Report
-title: "[BUG] Brief summary"
-labels: bug
+description: Use this template to report a bug
+title: "[BUG]: "
+labels: ["bug", "triage"]
 assignees: []
+projects: []
 
 body:
   - type: markdown
     attributes:
       value: |
-        ## Description
-        Provide a concise description of the issue.
+        Thanks for taking the time to fill out this bug report!
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
 
   - type: textarea
-    id: steps-to-reproduce
+    id: what-happened
     attributes:
-      label: Steps to Reproduce
-      description: List the steps to reproduce the bug
-      placeholder: |
-        1. ...
-        2. ...
-        3. ...
-
-  - type: textarea
-    id: expected-behavior
-    attributes:
-      label: Expected Behavior
-      description: Describe what you expected to happen
-
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: Screenshots / Videos
-      description: Add screenshots or videos if applicable
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
 
   - type: dropdown
-    id: operating-system
+    id: version
     attributes:
-      label: Operating System
-      description: Select the OS where the issue occurs
+      label: Version
+      description: What version of our software are you running?
       options:
-        - Windows 10
-        - Windows 11
-        - macOS Monterey
-        - macOS Ventura
-        - Linux
-        - Other
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+      default: 0
+    validations:
+      required: true
 
-  - type: input
-    id: browser-version
+  - type: dropdown
+    id: browsers
     attributes:
-      label: Browser and Version
-      description: e.g. Chrome 113, Firefox 100
-
-  - type: input
-    id: app-version
-    attributes:
-      label: Application Version
-      description: e.g. 1.2.3
-
-  - type: textarea
-    id: additional-notes
-    attributes:
-      label: Additional Notes
-      description: Any other relevant info or tips
+      label: What browsers are you se
