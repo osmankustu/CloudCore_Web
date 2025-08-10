@@ -1,0 +1,43 @@
+name: ✨ Feature Request
+description: Use this template to request a new feature
+title: "[FEATURE] Brief summary"
+labels: ["enhancement"]
+assignees: []
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Please provide a detailed description of the feature request.
+      placeholder: Describe the feature here
+    validations:
+      required: true
+
+  - type: input
+    id: importance
+    attributes:
+      label: Why Is It Important?
+      description: Describe why this feature is needed and what benefits it provides
+      placeholder: Importance of the feature
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Provide an example of how this feature would be used
+      placeholder: Example scenario
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives
+      description: Mention existing solutions or alternatives, if any
+      placeholder: Alternative approaches
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Any other details or information you'd like to add
+      placeholder: Optional
