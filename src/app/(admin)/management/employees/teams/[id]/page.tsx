@@ -2,15 +2,16 @@ import React, { Suspense } from "react";
 
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import Spinner from "@/components/ui/spinner/Spinner";
-import TeamsTable from "@/features/team/components/tables/TeamsTable";
+import TeamCard from "@/features/team/components/cards/TeamCard";
 
-const page = () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const page = ({ params }: any) => {
   return (
     <div>
       <PageBreadcrumb pageTitle="Ekipler" />
       <div>
         <Suspense fallback={<Spinner />}>
-          <TeamsTable />
+          <TeamCard id={params.id} />
         </Suspense>
       </div>
     </div>
