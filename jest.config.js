@@ -33,7 +33,7 @@ module.exports = {
       {
         resultDir: `test-results/jest-stare-reports/node${nodeVersion}`,
         filename: "jest-stare.html",
-        reportTitle: `Jest Stare Test Report - Node ${nodeVersion}`,
+        reportTitle: `CloudCore Web Test Results - Node ${nodeVersion}`,
         enableWebOutput: true,
       },
     ],

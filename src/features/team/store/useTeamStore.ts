@@ -1,4 +1,5 @@
 import { create } from "zustand";
+
 import { DynamicQuery } from "@/core/models/requests/DynamicQuery";
 import { Listed } from "@/core/network/api-results/Listed";
 import { Paginated } from "@/core/network/api-results/Paginated";
@@ -18,7 +19,7 @@ interface TeamState {
   teamOptions: Listed<TeamSelectModel> | null;
   fetchTeamOptions: () => Promise<void>;
   updateFormData: TeamUpdateModel;
-  setUpdateField: (field: keyof TeamUpdateModel, value: any) => void;
+  setUpdateField: (field: keyof TeamUpdateModel, value: string | string[] | boolean) => void;
   setUpdateFormData: (data: TeamUpdateModel) => void;
 
   isLoading: boolean;
@@ -49,7 +50,7 @@ export const useTeamStore = create<TeamState>((set, get) => ({
 
       set({ teams: data });
     } catch (error) {
-      console.error("fetchCustomers error", error);
+      // example usage Logger.w();
     } finally {
       set({ isLoading: false });
     }
@@ -62,7 +63,7 @@ export const useTeamStore = create<TeamState>((set, get) => ({
 
       set({ team: data });
     } catch (error) {
-      console.error("fetchCustomers error", error);
+      // example usage Logger.w();
     } finally {
       set({ isLoading: false });
     }
@@ -74,7 +75,7 @@ export const useTeamStore = create<TeamState>((set, get) => ({
       const data = await GetAllTeam();
       set({ teamOptions: data });
     } catch (error) {
-      console.error("fetchCustomers error", error);
+      // example usage Logger.w();
     } finally {
       set({ isLoading: false });
     }
