@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="63" failures="0" errors="0" time="7.855">
+  <testsuite name="@/features/personel/components/forms/PersonelAddForm" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:52" time="2.132" tests="5">
+    <testcase classname="@/features/personel/components/forms/PersonelAddForm form açıldığında initial verilerle doldurulmalı ve clearErrors çağrılmalı" name="@/features/personel/components/forms/PersonelAddForm form açıldığında initial verilerle doldurulmalı ve clearErrors çağrılmalı" time="0.158">
+    </testcase>
+    <testcase classname="@/features/personel/components/forms/PersonelAddForm input değiştiğinde formData güncellenmeli" name="@/features/personel/components/forms/PersonelAddForm input değiştiğinde formData güncellenmeli" time="0.032">
+    </testcase>
+    <testcase classname="@/features/personel/components/forms/PersonelAddForm Kapat butonuna tıklayınca onClose çalışmalı" name="@/features/personel/components/forms/PersonelAddForm Kapat butonuna tıklayınca onClose çalışmalı" time="0.057">
+    </testcase>
+    <testcase classname="@/features/personel/components/forms/PersonelAddForm Oluştur tıklanınca AddPersonel çağrılmalı ve fotoğraf yükleme yapılmalı" name="@/features/personel/components/forms/PersonelAddForm Oluştur tıklanınca AddPersonel çağrılmalı ve fotoğraf yükleme yapılmalı" time="0.104">
+    </testcase>
+    <testcase classname="@/features/personel/components/forms/PersonelAddForm Personel ID dönmezse showError çağrılmalı" name="@/features/personel/components/forms/PersonelAddForm Personel ID dönmezse showError çağrılmalı" time="0.057">
+    </testcase>
+  </testsuite>
+  <testsuite name="SignInForm" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:52" time="2.325" tests="2">
+    <testcase classname="SignInForm renders form fields" name="SignInForm renders form fields" time="0.309">
+    </testcase>
+    <testcase classname="SignInForm submits the form with valid inputs" name="SignInForm submits the form with valid inputs" time="0.161">
+    </testcase>
+  </testsuite>
+  <testsuite name="CorporateCustomerContactEditForm" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:52" time="2.697" tests="1">
+    <testcase classname="CorporateCustomerContactEditForm Kaydet butonuna tıklanınca UpdateCorporateCustomer çağrılır ve işlemler yapılır" name="CorporateCustomerContactEditForm Kaydet butonuna tıklanınca UpdateCorporateCustomer çağrılır ve işlemler yapılır" time="0.56">
+    </testcase>
+  </testsuite>
+  <testsuite name="TeamInfoEditForm" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:52" time="2.789" tests="4">
+    <testcase classname="TeamInfoEditForm Form başlıkları ve mevcut ekip adı render olur" name="TeamInfoEditForm Form başlıkları ve mevcut ekip adı render olur" time="0.467">
+    </testcase>
+    <testcase classname="TeamInfoEditForm Switch değiştiğinde setUpdateField çağrılır" name="TeamInfoEditForm Switch değiştiğinde setUpdateField çağrılır" time="0.216">
+    </testcase>
+    <testcase classname="TeamInfoEditForm Kapat butonuna tıklanınca onClose çağrılır" name="TeamInfoEditForm Kapat butonuna tıklanınca onClose çağrılır" time="0.13">
+    </testcase>
+    <testcase classname="TeamInfoEditForm Kaydet butonuna tıklanınca UpdateTeam çağrılır ve işlemler yapılır" name="TeamInfoEditForm Kaydet butonuna tıklanınca UpdateTeam çağrılır ve işlemler yapılır" time="0.134">
+    </testcase>
+  </testsuite>
+  <testsuite name="teamService tests" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:54" time="0.724" tests="7">
+    <testcase classname="teamService tests AddTeam should call axiosInstance.post and return response" name="teamService tests AddTeam should call axiosInstance.post and return response" time="0.003">
+    </testcase>
+    <testcase classname="teamService tests UpdateTeam should call axiosInstance.put and return response" name="teamService tests UpdateTeam should call axiosInstance.put and return response" time="0.001">
+    </testcase>
+    <testcase classname="teamService tests DeleteTeam should call axiosInstance.delete and return data" name="teamService tests DeleteTeam should call axiosInstance.delete and return data" time="0.001">
+    </testcase>
+    <testcase classname="teamService tests GetListTeam should call axiosInstance.get and return data" name="teamService tests GetListTeam should call axiosInstance.get and return data" time="0">
+    </testcase>
+    <testcase classname="teamService tests GetListByDynamicTeam should call axiosInstance.get and return data" name="teamService tests GetListByDynamicTeam should call axiosInstance.get and return data" time="0.001">
+    </testcase>
+    <testcase classname="teamService tests GetAllTeam should call axiosInstance.get and return data" name="teamService tests GetAllTeam should call axiosInstance.get and return data" time="0.001">
+    </testcase>
+    <testcase classname="teamService tests GetTeamById should call axiosInstance.get and return data" name="teamService tests GetTeamById should call axiosInstance.get and return data" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="TeamStatusIndicator" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:54" time="0.593" tests="3">
+    <testcase classname="TeamStatusIndicator status true ise &apos;Aktif Ekip&apos; gösterir" name="TeamStatusIndicator status true ise &apos;Aktif Ekip&apos; gösterir" time="0.037">
+    </testcase>
+    <testcase classname="TeamStatusIndicator status false ise &apos;Pasif Ekip&apos; gösterir" name="TeamStatusIndicator status false ise &apos;Pasif Ekip&apos; gösterir" time="0.011">
+    </testcase>
+    <testcase classname="TeamStatusIndicator status undefined ise boş metin gösterir" name="TeamStatusIndicator status undefined ise boş metin gösterir" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="useCorporateCustomerStore tests" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:55" time="0.649" tests="9">
+    <testcase classname="useCorporateCustomerStore tests initial state must be null !" name="useCorporateCustomerStore tests initial state must be null !" time="0.002">
+    </testcase>
+    <testcase classname="useCorporateCustomerStore tests the value should change when the state is updated" name="useCorporateCustomerStore tests the value should change when the state is updated" time="0">
+    </testcase>
+    <testcase classname="useCorporateCustomerStore tests When fetchCorporateCustomers is called, state should be set (not DynamicQuery)" name="useCorporateCustomerStore tests When fetchCorporateCustomers is called, state should be set (not DynamicQuery)" time="0.003">
+    </testcase>
+    <testcase classname="useCorporateCustomerStore tests When fetchCorporateCustomers is called, state should be set (Dynamic Query)" name="useCorporateCustomerStore tests When fetchCorporateCustomers is called, state should be set (Dynamic Query)" time="0.007">
+    </testcase>
+    <testcase classname="useCorporateCustomerStore tests When fetchCorporateCustomer is called, state should be set" name="useCorporateCustomerStore tests When fetchCorporateCustomer is called, state should be set" time="0.002">
+    </testcase>
+    <testcase classname="useCorporateCustomerStore tests The state is set when fetchCorporateOptions is called" name="useCorporateCustomerStore tests The state is set when fetchCorporateOptions is called" time="0.001">
+    </testcase>
+    <testcase classname="useCorporateCustomerStore tests The state should be updated when setUpdateFormData() runs" name="useCorporateCustomerStore tests The state should be updated when setUpdateFormData() runs" time="0.001">
+    </testcase>
+    <testcase classname="useCorporateCustomerStore tests When isDynamic changes, the state should be updated" name="useCorporateCustomerStore tests When isDynamic changes, the state should be updated" time="0.001">
+    </testcase>
+    <testcase classname="useCorporateCustomerStore tests When dynamicQuery changes, the state should be updated" name="useCorporateCustomerStore tests When dynamicQuery changes, the state should be updated" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="TeamMembersEditForm" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:52" time="3.303" tests="4">
+    <testcase classname="TeamMembersEditForm Form başlıkları render olur ve select gösterilir" name="TeamMembersEditForm Form başlıkları render olur ve select gösterilir" time="0.666">
+    </testcase>
+    <testcase classname="TeamMembersEditForm Select ile personel seçimi değiştirildiğinde setUpdateField çağrılır" name="TeamMembersEditForm Select ile personel seçimi değiştirildiğinde setUpdateField çağrılır" time="0.543">
+    </testcase>
+    <testcase classname="TeamMembersEditForm Kapat butonuna tıklanınca onClose çağrılır" name="TeamMembersEditForm Kapat butonuna tıklanınca onClose çağrılır" time="0.093">
+    </testcase>
+    <testcase classname="TeamMembersEditForm Kaydet butonuna tıklanınca UpdateTeam çağrılır ve işlemler yapılır" name="TeamMembersEditForm Kaydet butonuna tıklanınca UpdateTeam çağrılır ve işlemler yapılır" time="0.105">
+    </testcase>
+  </testsuite>
+  <testsuite name="" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:55" time="0.367" tests="9">
+    <testcase classname=" initial state must be null !" name=" initial state must be null !" time="0.009">
+    </testcase>
+    <testcase classname=" he value should change when the state is updated" name=" he value should change when the state is updated" time="0.001">
+    </testcase>
+    <testcase classname=" When Fetch teams is called, the state is set (not DynamicQuery)" name=" When Fetch teams is called, the state is set (not DynamicQuery)" time="0.002">
+    </testcase>
+    <testcase classname=" When Fetch teams is called the state is set (Dynamic Query is true)" name=" When Fetch teams is called the state is set (Dynamic Query is true)" time="0.002">
+    </testcase>
+    <testcase classname=" When Fetch team is called the state is set" name=" When Fetch team is called the state is set" time="0.001">
+    </testcase>
+    <testcase classname=" The state is set when the fetch get all team is called" name=" The state is set when the fetch get all team is called" time="0.001">
+    </testcase>
+    <testcase classname=" The status should be updated when &apos;setUpdateFormData()&apos; runs" name=" The status should be updated when &apos;setUpdateFormData()&apos; runs" time="0">
+    </testcase>
+    <testcase classname=" When isDynamic changes, the state should be updated." name=" When isDynamic changes, the state should be updated." time="0">
+    </testcase>
+    <testcase classname=" When the dynamic query parameter changes, the state must be updated." name=" When the dynamic query parameter changes, the state must be updated." time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="PersonelCard" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:55" time="0.569" tests="3">
+    <testcase classname="PersonelCard spinner görünmeli veri yokken" name="PersonelCard spinner görünmeli veri yokken" time="0.028">
+    </testcase>
+    <testcase classname="PersonelCard veri geldiğinde kartlar render edilmeli" name="PersonelCard veri geldiğinde kartlar render edilmeli" time="0.029">
+    </testcase>
+    <testcase classname="PersonelCard sekme değişince ilgili içerik görünmeli" name="PersonelCard sekme değişince ilgili içerik görünmeli" time="0.028">
+    </testcase>
+  </testsuite>
+  <testsuite name="corporateCustomerService tests" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:55" time="0.513" tests="7">
+    <testcase classname="corporateCustomerService tests AddCorporateCustomer should call axiosInstance.post and return response" name="corporateCustomerService tests AddCorporateCustomer should call axiosInstance.post and return response" time="0.015">
+    </testcase>
+    <testcase classname="corporateCustomerService tests UpdateCorporateCustomer should call axiosInstance.put and return response" name="corporateCustomerService tests UpdateCorporateCustomer should call axiosInstance.put and return response" time="0.002">
+    </testcase>
+    <testcase classname="corporateCustomerService tests DeleteCorporateCustomer should call axiosInstance.delete and return data" name="corporateCustomerService tests DeleteCorporateCustomer should call axiosInstance.delete and return data" time="0.004">
+    </testcase>
+    <testcase classname="corporateCustomerService tests GetListCorporateCustomer should call axiosInstance.get and return data" name="corporateCustomerService tests GetListCorporateCustomer should call axiosInstance.get and return data" time="0.001">
+    </testcase>
+    <testcase classname="corporateCustomerService tests GetListByDynamicCorporateCustomer should call axiosInstance.post and return data" name="corporateCustomerService tests GetListByDynamicCorporateCustomer should call axiosInstance.post and return data" time="0.001">
+    </testcase>
+    <testcase classname="corporateCustomerService tests GetAllCorporateCustomers should call axiosInstance.get and return data" name="corporateCustomerService tests GetAllCorporateCustomers should call axiosInstance.get and return data" time="0.001">
+    </testcase>
+    <testcase classname="corporateCustomerService tests GetByIdCorporateCustomer should call axiosInstance.get and return data" name="corporateCustomerService tests GetByIdCorporateCustomer should call axiosInstance.get and return data" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="TeamAddForm" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:52" time="4.111" tests="5">
+    <testcase classname="TeamAddForm Form başlıkları ve inputlar render olur" name="TeamAddForm Form başlıkları ve inputlar render olur" time="0.302">
+    </testcase>
+    <testcase classname="TeamAddForm Ekip Adı inputuna yazılabilir" name="TeamAddForm Ekip Adı inputuna yazılabilir" time="0.861">
+    </testcase>
+    <testcase classname="TeamAddForm Select bileşeninden çoklu seçim yapılabilir" name="TeamAddForm Select bileşeninden çoklu seçim yapılabilir" time="0.532">
+    </testcase>
+    <testcase classname="TeamAddForm Kapat butonuna tıklanınca onClose çağrılır" name="TeamAddForm Kapat butonuna tıklanınca onClose çağrılır" time="0.044">
+    </testcase>
+    <testcase classname="TeamAddForm Oluştur butonuna tıklanınca AddTeam çağrılır ve işlemler yapılır (personel seçimi dahil)" name="TeamAddForm Oluştur butonuna tıklanınca AddTeam çağrılır ve işlemler yapılır (personel seçimi dahil)" time="0.416">
+    </testcase>
+  </testsuite>
+  <testsuite name="CorporateCustomerAddForm" errors="0" failures="0" skipped="0" timestamp="2025-08-11T17:58:52" time="4.38" tests="4">
+    <testcase classname="CorporateCustomerAddForm Form başlıkları ve inputlar render olur" name="CorporateCustomerAddForm Form başlıkları ve inputlar render olur" time="0.27">
+    </testcase>
+    <testcase classname="CorporateCustomerAddForm Inputlara yazılabilir" name="CorporateCustomerAddForm Inputlara yazılabilir" time="1.585">
+    </testcase>
+    <testcase classname="CorporateCustomerAddForm Oluştur butonuna tıklanınca AddCorporateCustomer çağrılır ve işlemler yapılır" name="CorporateCustomerAddForm Oluştur butonuna tıklanınca AddCorporateCustomer çağrılır ve işlemler yapılır" time="0.604">
+    </testcase>
+    <testcase classname="CorporateCustomerAddForm Kapat butonuna tıklanınca onClose çağrılır" name="CorporateCustomerAddForm Kapat butonuna tıklanınca onClose çağrılır" time="0.025">
+    </testcase>
+  </testsuite>
+</testsuites>
