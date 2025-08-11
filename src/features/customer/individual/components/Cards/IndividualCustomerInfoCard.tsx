@@ -1,10 +1,11 @@
-'use client';
-import { useModal } from '@/hooks/useModal';
-import React from 'react';
-import { Modal } from '../../../../components/ui/modal';
+"use client";
+import React from "react";
 
-import IndividualCustomerInfoUpdateForm from '../Forms/IndividualCustomerInfoEditForm';
-import { IndividualCustomerModel } from '@/models/entity/IndividualCustomer';
+import { Modal } from "@/components/ui/modal";
+import { useModal } from "@/core/hooks/useModal";
+
+import { IndividualCustomerModel } from "../../model/IndividualCustomer";
+import IndividualCustomerInfoUpdateForm from "../Forms/IndividualCustomerInfoEditForm";
 
 const IndividualCustomerInfoCard = ({
   individualCustomer,

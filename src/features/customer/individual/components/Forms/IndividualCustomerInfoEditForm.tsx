@@ -1,15 +1,17 @@
-'use client';
-import Input from '@/components/form/input/InputField';
-import Label from '@/components/form/Label';
-import Button from '@/components/ui/button/Button';
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useFormErrors } from '@/context/FormErrorContext';
-import { useRequestAction } from '@/hooks/useRequestAction';
-import { UpdateIndividualCustomer } from '@/Services/CustomerService';
-import { showSuccess } from '@/Utils/showToast';
-import { SmoothSpinner } from '@/components/ui/SmoothSpinner';
-import { useIndividualCustomerStore } from '@/Stores/useIndividualCustomerStore';
+"use client";
+import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+
+import Input from "@/components/form/input/InputField";
+import Label from "@/components/form/Label";
+import Button from "@/components/ui/button/Button";
+import { SmoothSpinner } from "@/components/ui/spinner/SmoothSpinner";
+import { useFormErrors } from "@/core/context/FormErrorContext";
+import { useRequestAction } from "@/core/hooks/useRequestAction";
+import { showSuccess } from "@/core/utils/toastHelper";
+
+import { UpdateIndividualCustomer } from "../../service/individualCustomerService";
+import { useIndividualCustomerStore } from "../../store/useIndividualCustomerStore";
 
 const IndividualCustomerInfoUpdateForm = ({
   isOpen,
@@ -64,8 +66,8 @@ const IndividualCustomerInfoUpdateForm = ({
       const response = await UpdateIndividualCustomer(updateFormData);
       if (response.status == 200) {
         onClose();
-        showSuccess('Genel Bilgiler Güncellendi');
-        fetchIndividualCustomer(individualCustomer?.id!);
+        showSuccess("Genel Bilgiler Güncellendi");
+        fetchIndividualCustomer(individualCustomer!.id);
       }
     });
   };
@@ -100,7 +102,7 @@ const IndividualCustomerInfoUpdateForm = ({
                     <Input
                       type="text"
                       value={updateFormData?.firstName}
-                      onChange={(e) => setUpdateField('firstName', e.target.value)}
+                      onChange={e => setUpdateField("firstName", e.target.value)}
                       error={!!errors.FirstName}
                       hint={errors.FirstName!}
                     />
@@ -110,7 +112,7 @@ const IndividualCustomerInfoUpdateForm = ({
                     <Input
                       type="text"
                       value={updateFormData?.lastName}
-                      onChange={(e) => setUpdateField('lastName', e.target.value)}
+                      onChange={e => setUpdateField("lastName", e.target.value)}
                       error={!!errors.LastName}
                       hint={errors.LastName!}
                     />
@@ -129,7 +131,7 @@ const IndividualCustomerInfoUpdateForm = ({
                     <span>Kaydediliyor...</span>
                   </div>
                 ) : (
-                  'Kaydet'
+                  "Kaydet"
                 )}
               </Button>
             </div>

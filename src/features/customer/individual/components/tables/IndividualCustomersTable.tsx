@@ -1,22 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Pagination from "@/components/tables/Pagination";
-import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
-import Button from "@/components/ui/button/Button";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
+
+import Pagination from "@/components/tables/Pagination";
+import Button from "@/components/ui/button/Button";
 import FilterTableButton from "@/components/ui/button/FilterTableButton";
 import TableButton from "@/components/ui/button/TableButton";
-
-import { AnimatePresence, motion } from "framer-motion";
-import IndividualCustomerAddForm from "./Forms/IndividualCustomerAddForm";
-import { PageRequest } from "@/core/models/requests/PageRequest";
-import { QueryParserForPageRequest } from "@/core/utils/queryParser";
+import { Modal } from "@/components/ui/modal";
+import Spinner from "@/components/ui/spinner/Spinner";
+import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { useIndividualCustomerStore } from "../store/useIndividualCustomerStore";
-import Spinner from "@/components/ui/spinner/Spinner";
+import { PageRequest } from "@/core/models/requests/PageRequest";
 import { formatDate } from "@/core/utils/dateFormater";
-import { Modal } from "@/components/ui/modal";
+import { QueryParserForPageRequest } from "@/core/utils/queryParser";
+
+import { useIndividualCustomerStore } from "../../store/useIndividualCustomerStore";
+import IndividualCustomerAddForm from "../Forms/IndividualCustomerAddForm";
 
 const IndividualCustomersTable = () => {
   const searchParams = useSearchParams();
@@ -63,7 +64,7 @@ const IndividualCustomersTable = () => {
     });
   }, []);
 
-  const dropFilter = (status: Boolean) => {
+  const dropFilter = (status: boolean) => {
     if (status) {
       setDynamicQuery({
         filter: {},
@@ -221,7 +222,9 @@ const IndividualCustomersTable = () => {
                       <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
                         <Button
                           size="sm"
-                          onClick={() => router.push(`/customers/individual/${customer.id}`)}
+                          onClick={() =>
+                            router.push(`/management/customers/individual/${customer.id}`)
+                          }
                         >
                           Detay
                         </Button>
@@ -238,15 +241,15 @@ const IndividualCustomersTable = () => {
       {individualCustomers ? (
         <>
           <Pagination
-            items={individualCustomers?.count!}
-            pageSize={individualCustomers?.size!}
+            items={individualCustomers.count}
+            pageSize={individualCustomers.size}
             pageSizes={[20, 50]}
             onChangeSize={size =>
               router.push(
                 `/customers/individual/?pageIndex=${pageRequest.pageIndex}&pageSize=${size}`,
               )
             }
-            currentPage={individualCustomers?.index! + 1}
+            currentPage={individualCustomers.index + 1}
             onBack={() =>
               router.push(
                 `/customers/individual/?pageIndex=${pageRequest.pageIndex - 1}&pageSize=${pageRequest.pageSize}`,
@@ -262,7 +265,7 @@ const IndividualCustomersTable = () => {
                 `/customers/individual/?pageIndex=${pageRequest.pageIndex + 1}&pageSize=${pageRequest.pageSize}`,
               )
             }
-            totalPages={individualCustomers?.pages!}
+            totalPages={individualCustomers.pages}
             key={1}
           />
         </>

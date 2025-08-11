@@ -1,16 +1,16 @@
+import { DynamicQuery } from "@/core/models/requests/DynamicQuery";
 import axiosInstance from "@/core/network/axiosInstance";
+
 import {
   IndividualCustomerAddModel,
   IndividualCustomerUpdateModel,
 } from "../model/IndividualCustomer";
-import { DynamicQuery } from "@/core/models/requests/DynamicQuery";
 
 export async function AddIndividualCustomer(model: IndividualCustomerAddModel) {
   try {
     const res = await axiosInstance.post("customers/individual", model);
     return res;
   } catch (error) {
-    console.error("Error adding company :", error);
     throw error;
   }
 }
@@ -29,7 +29,6 @@ export async function DeleteIndividualCustomer(id: string) {
     const res = await axiosInstance.delete("customers/individual/" + id);
     return res.data;
   } catch (error) {
-    console.error("Error adding company :", error);
     throw error;
   }
 }
@@ -41,7 +40,6 @@ export async function GetListIndividualCustomer(pageIndex: number = 0, pageSize:
     );
     return res.data;
   } catch (error) {
-    console.error("Error fetching company:", error);
     throw error;
   }
 }
@@ -57,7 +55,9 @@ export async function GetListByDynamicIndividualCustomer(
       dynamicQuery,
     );
     return res.data;
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 }
 
 export async function GetAllIndividualCustomers() {
@@ -65,7 +65,6 @@ export async function GetAllIndividualCustomers() {
     const res = await axiosInstance.get("customers/individual/get-list/for-select");
     return res.data;
   } catch (error) {
-    console.error("Error fetching company:", error);
     throw error;
   }
 }
@@ -84,7 +83,6 @@ export async function getAddress() {
     const res = await axiosInstance.get("/address/");
     return res.data;
   } catch (error) {
-    console.error("Error fetching address :", error);
     throw error;
   }
 }

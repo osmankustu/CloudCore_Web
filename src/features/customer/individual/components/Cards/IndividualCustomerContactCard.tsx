@@ -1,14 +1,16 @@
-'use client';
-import { useModal } from '@/hooks/useModal';
-import React from 'react';
-import { Modal } from '../../../../components/ui/modal';
-import { IndividualCustomerGetByIdModel } from '@/models/entity/IndividualCustomer/IndividualCustomerGetByIdModel';
-import IndividualCustomerContactUpdateForm from '../Forms/IndividualCustomerContactEditForm';
+"use client";
+import React from "react";
+
+import { Modal } from "@/components/ui/modal";
+import { useModal } from "@/core/hooks/useModal";
+
+import { IndividualCustomerModel } from "../../model/IndividualCustomer";
+import IndividualCustomerContactUpdateForm from "../Forms/IndividualCustomerContactEditForm";
 
 const IndividualCustomerContactCard = ({
   individualCustomer,
 }: {
-  individualCustomer: IndividualCustomerGetByIdModel | undefined;
+  individualCustomer: IndividualCustomerModel | undefined;
 }) => {
   const { isOpen, openModal, closeModal } = useModal();
 

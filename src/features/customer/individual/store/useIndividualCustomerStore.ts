@@ -1,12 +1,14 @@
 import { create } from "zustand";
+
+import { DynamicQuery } from "@/core/models/requests/DynamicQuery";
+import { Listed } from "@/core/network/api-results/Listed";
+import { Paginated } from "@/core/network/api-results/Paginated";
+
 import {
   IndividualCustomerModel,
   IndividualCustomerSelectModel,
   IndividualCustomerUpdateModel,
 } from "../model/IndividualCustomer";
-import { Paginated } from "@/core/network/api-results/Paginated";
-import { Listed } from "@/core/network/api-results/Listed";
-import { DynamicQuery } from "@/core/models/requests/DynamicQuery";
 import {
   GetAllIndividualCustomers,
   GetByIdIndividualCustomer,

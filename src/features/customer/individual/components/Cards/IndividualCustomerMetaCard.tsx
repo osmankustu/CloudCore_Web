@@ -1,17 +1,19 @@
-'use client';
-import { useModal } from '@/hooks/useModal';
-import { useRequestAction } from '@/hooks/useRequestAction';
-import { DeleteIndividualCustomer } from '@/Services/CustomerService';
-import { formatDate } from '@/Utils/dateFormatter';
-import { showSuccess } from '@/Utils/showToast';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import React from 'react';
-import { Modal } from '../../../../components/ui/modal';
-import Button from '../../../../components/ui/button/Button';
-import { motion } from 'framer-motion';
-import { SmoothSpinner } from '../../../../components/ui/SmoothSpinner';
-import { IndividualCustomerModel } from '@/models/entity/IndividualCustomer';
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React from "react";
+
+import Button from "@/components/ui/button/Button";
+import { Modal } from "@/components/ui/modal";
+import { SmoothSpinner } from "@/components/ui/spinner/SmoothSpinner";
+import { useModal } from "@/core/hooks/useModal";
+import { useRequestAction } from "@/core/hooks/useRequestAction";
+import { formatDate } from "@/core/utils/dateFormater";
+import { showSuccess } from "@/core/utils/toastHelper";
+
+import { IndividualCustomerModel } from "../../model/IndividualCustomer";
+import { DeleteIndividualCustomer } from "../../service/individualCustomerService";
 
 const IndividualCustomerMetaCard = ({
   individualCustomer,
@@ -26,10 +28,10 @@ const IndividualCustomerMetaCard = ({
 
   const handleDelete = async () => {
     run(async () => {
-      const response = await DeleteIndividualCustomer(individualCustomer?.id!);
+      const response = await DeleteIndividualCustomer(individualCustomer!.id);
       if ((response.status = 200)) {
         router.back();
-        showSuccess('Müşteri Silindi');
+        showSuccess("Müşteri Silindi");
       }
     });
   };
@@ -49,43 +51,43 @@ const IndividualCustomerMetaCard = ({
             </div>
             <div className="order-3 xl:order-2">
               <h4 className="mb-2 text-center text-lg font-semibold text-gray-800 xl:text-left dark:text-white/90">
-                {individualCustomer?.firstName + ' ' + individualCustomer?.lastName}
+                {individualCustomer?.firstName + " " + individualCustomer?.lastName}
               </h4>
               <div className="flex flex-col items-center gap-1 text-center xl:flex-row xl:gap-3 xl:text-left">
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {formatDate(individualCustomer?.createAt || '')}
+                  {formatDate(individualCustomer?.createAt || "")}
                 </p>
                 <div className="hidden h-3.5 w-px bg-gray-300 xl:block dark:bg-gray-700"></div>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {formatDate(individualCustomer?.updateAt || '')}
+                  {formatDate(individualCustomer?.updateAt || "")}
                 </p>
               </div>
             </div>
             <div className="order-2 flex grow items-center gap-2 xl:order-3 xl:justify-end">
               <button
                 className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-md hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-                onClick={() => setActive('GeneralInformation')}
+                onClick={() => setActive("GeneralInformation")}
               >
                 Genel Bilgiler
               </button>
 
               <button
                 className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-md hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-                onClick={() => setActive('ServiceRecords')}
+                onClick={() => setActive("ServiceRecords")}
               >
                 Servis Kayıtları
               </button>
 
               <button
                 className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-md hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-                onClick={() => setActive('Reports')}
+                onClick={() => setActive("Reports")}
               >
                 Raporlar
               </button>
 
               <button
                 className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-md hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-                onClick={() => setActive('Notes')}
+                onClick={() => setActive("Notes")}
               >
                 Notlar
               </button>
@@ -144,7 +146,7 @@ const IndividualCustomerMetaCard = ({
                       <span>Siliniyor...</span>
                     </div>
                   ) : (
-                    'Sil'
+                    "Sil"
                   )}
                 </Button>
               </div>

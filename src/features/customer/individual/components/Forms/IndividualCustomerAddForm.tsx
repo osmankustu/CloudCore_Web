@@ -1,15 +1,16 @@
-import Input from '@/components/form/input/InputField';
-import Label from '@/components/form/Label';
-import Button from '@/components/ui/button/Button';
-import { useFormErrors } from '@/context/FormErrorContext';
-import { useRequestAction } from '@/hooks/useRequestAction';
-import { AddIndividualCustomer } from '@/Services/CustomerService';
-import { showSuccess } from '@/Utils/showToast';
-import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { IndividualCustomerAddModel } from '@/models/entity/IndividualCustomer';
-import { SmoothSpinner } from '@/components/ui/SmoothSpinner';
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+
+import Input from "@/components/form/input/InputField";
+import Label from "@/components/form/Label";
+import Button from "@/components/ui/button/Button";
+import { useFormErrors } from "@/core/context/FormErrorContext";
+import { useRequestAction } from "@/core/hooks/useRequestAction";
+import { showSuccess } from "@/core/utils/toastHelper";
+
+import { IndividualCustomerAddModel } from "../../model/IndividualCustomer";
+import { AddIndividualCustomer } from "../../service/individualCustomerService";
 
 const IndividualCustomerAddForm = ({
   isOpen,
@@ -23,10 +24,10 @@ const IndividualCustomerAddForm = ({
   const [formData, setFormData] = useState<IndividualCustomerAddModel | undefined>();
   const router = useRouter();
   const initialFormData: IndividualCustomerAddModel = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
   };
 
   useEffect(() => {
@@ -34,8 +35,8 @@ const IndividualCustomerAddForm = ({
     clearErrors();
   }, [isOpen]);
 
-  const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev!, [e.target.name]: e.target.value }));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({ ...prev!, [e.target.name]: e.target.value }));
   };
 
   const handleSave = async () => {
@@ -43,7 +44,7 @@ const IndividualCustomerAddForm = ({
       const response = await AddIndividualCustomer(formData!);
       if (response.status == 201) {
         onClose();
-        showSuccess('Müşteri Eklendi');
+        showSuccess("Müşteri Eklendi");
         router.push(`/customers/individual/${response.data.id}`);
       }
     });
@@ -54,7 +55,7 @@ const IndividualCustomerAddForm = ({
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 50, scale: 0.95 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className="no-scrollbar relative w-full max-w-[900px] overflow-y-auto rounded-3xl bg-white p-4 lg:p-11 dark:bg-gray-900"
     >
       {/* Burası senin modal içeriğin */}

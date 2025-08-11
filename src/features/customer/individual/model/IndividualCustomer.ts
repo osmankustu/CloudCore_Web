@@ -1,7 +1,6 @@
 import { BaseCustomer } from "@/core/models/base-customer";
 import { BaseModel } from "@/core/models/base-model";
 
-
 export interface IndividualCustomerModel extends BaseCustomer, BaseModel {
   customerNo: string;
   firstName: string;

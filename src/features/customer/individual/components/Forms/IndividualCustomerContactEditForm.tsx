@@ -1,15 +1,17 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Label from '@/components/form/Label';
-import Input from '@/components/form/input/InputField';
-import Button from '@/components/ui/button/Button';
-import { useFormErrors } from '@/context/FormErrorContext';
-import { useRequestAction } from '@/hooks/useRequestAction';
-import { SmoothSpinner } from '@/components/ui/SmoothSpinner';
-import { UpdateIndividualCustomer } from '@/Services/CustomerService';
-import { showSuccess } from '@/Utils/showToast';
-import { useIndividualCustomerStore } from '@/Stores/useIndividualCustomerStore';
+"use client";
+import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+
+import Input from "@/components/form/input/InputField";
+import Label from "@/components/form/Label";
+import Button from "@/components/ui/button/Button";
+import { SmoothSpinner } from "@/components/ui/spinner/SmoothSpinner";
+import { useFormErrors } from "@/core/context/FormErrorContext";
+import { useRequestAction } from "@/core/hooks/useRequestAction";
+import { showSuccess } from "@/core/utils/toastHelper";
+
+import { UpdateIndividualCustomer } from "../../service/individualCustomerService";
+import { useIndividualCustomerStore } from "../../store/useIndividualCustomerStore";
 
 const IndividualCustomerContactUpdateForm = ({
   isOpen,
@@ -63,8 +65,8 @@ const IndividualCustomerContactUpdateForm = ({
       const response = await UpdateIndividualCustomer(updateFormData);
       if (response.status == 200) {
         onClose();
-        showSuccess('İletişim Bilgileri Güncellendi');
-        fetchIndividualCustomer(individualCustomer?.id!);
+        showSuccess("İletişim Bilgileri Güncellendi");
+        fetchIndividualCustomer(individualCustomer!.id);
       }
     });
   };
@@ -75,7 +77,7 @@ const IndividualCustomerContactUpdateForm = ({
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.25, ease: 'easeInOut' }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
         className="no-scrollbar relative w-full max-w-[900px] overflow-y-auto rounded-3xl bg-white p-4 lg:p-11 dark:bg-gray-900"
       >
         <div className="px-2 pr-14">
@@ -101,7 +103,7 @@ const IndividualCustomerContactUpdateForm = ({
                     type="text"
                     value={updateFormData?.phoneNumber}
                     name="phoneNumber"
-                    onChange={(e) => setUpdateField('phoneNumber', e.target.value)}
+                    onChange={e => setUpdateField("phoneNumber", e.target.value)}
                     error={!!errors.PhoneNumber}
                     hint={errors.PhoneNumber!}
                   />
@@ -113,7 +115,7 @@ const IndividualCustomerContactUpdateForm = ({
                     type="email"
                     value={updateFormData?.email}
                     name="email"
-                    onChange={(e) => setUpdateField('email', e.target.value)}
+                    onChange={e => setUpdateField("email", e.target.value)}
                     error={!!errors.Email}
                     hint={errors.Email!}
                   />
@@ -133,7 +135,7 @@ const IndividualCustomerContactUpdateForm = ({
                   <span>Kaydediliyor...</span>
                 </div>
               ) : (
-                'Kaydet'
+                "Kaydet"
               )}
             </Button>
           </div>

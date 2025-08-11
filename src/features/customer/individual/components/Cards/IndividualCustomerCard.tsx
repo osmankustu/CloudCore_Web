@@ -1,17 +1,19 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { useRequestAction } from '@/hooks/useRequestAction';
-import IndividualCustomerMetaCard from './IndividualCustomerMetaCard';
-import IndividualCustomerInfoCard from './IndividualCustomerInfoCard';
-import IndividualCustomerContactCard from './IndividualCustomerContactCard';
-import IndividualCustomerAddressCard from './IndividualCustomerAddressCard';
-import IndividualCustomerServiceRecordTable from './IndividualCustomerServiceRecordTable';
-import { motion, AnimatePresence } from 'framer-motion';
-import Spinner from '../../../../components/ui/Spinner';
-import { useIndividualCustomerStore } from '@/Stores/useIndividualCustomerStore';
+"use client";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 
-const IndividualCustomerCard = ({ id }) => {
-  const [activeTab, setActiveTab] = useState('GeneralInformation');
+import Spinner from "@/components/ui/spinner/Spinner";
+import { useRequestAction } from "@/core/hooks/useRequestAction";
+
+import { useIndividualCustomerStore } from "../../store/useIndividualCustomerStore";
+import IndividualCustomerServiceRecordTable from "../tables/IndividualCustomerServiceRecordTable";
+import IndividualCustomerAddressCard from "./IndividualCustomerAddressCard";
+import IndividualCustomerContactCard from "./IndividualCustomerContactCard";
+import IndividualCustomerInfoCard from "./IndividualCustomerInfoCard";
+import IndividualCustomerMetaCard from "./IndividualCustomerMetaCard";
+
+const IndividualCustomerCard = ({ id }: { id: string }) => {
+  const [activeTab, setActiveTab] = useState("GeneralInformation");
   const { run } = useRequestAction();
 
   const { individualCustomer, fetchIndividualCustomer } = useIndividualCustomerStore();
@@ -45,7 +47,7 @@ const IndividualCustomerCard = ({ id }) => {
               setActive={(value: string) => setActiveTab(value)}
             />
 
-            {activeTab === 'GeneralInformation' && (
+            {activeTab === "GeneralInformation" && (
               <>
                 <IndividualCustomerInfoCard individualCustomer={individualCustomer} />
                 <IndividualCustomerContactCard individualCustomer={individualCustomer} />
@@ -54,20 +56,20 @@ const IndividualCustomerCard = ({ id }) => {
             )}
 
             {/* düzenlenecek  */}
-            {activeTab === 'ServiceRecords' && (
+            {activeTab === "ServiceRecords" && (
               <div className="pt-5">
                 <IndividualCustomerServiceRecordTable individualCustomer={individualCustomer!} />
               </div>
             )}
 
-            {activeTab === 'Reports' && (
+            {activeTab === "Reports" && (
               <div className="pt-5">
-                Bu Alanda Firma'ya Ait Servis Kayıtlarına Ait Raporlar Listelenecek
+                Bu Alanda Firmaya Ait Servis Kayıtlarına Ait Raporlar Listelenecek
               </div>
             )}
 
-            {activeTab === 'Notes' && (
-              <div className="pt-5">Bu Alanda Firma'ya Ait Notlar Listelenecek</div>
+            {activeTab === "Notes" && (
+              <div className="pt-5">Bu Alanda Firmaya Ait Notlar Listelenecek</div>
             )}
           </motion.div>
         ) : (
