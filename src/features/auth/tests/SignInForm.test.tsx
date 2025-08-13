@@ -43,7 +43,7 @@ describe("SignInForm", () => {
     render(<SignInForm />);
     expect(screen.getByPlaceholderText("info@gmail.com")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Enter your password")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /sign in/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Giriş Yap/i })).toBeInTheDocument();
   });
 
   it("submits the form with valid inputs", async () => {
@@ -56,8 +56,8 @@ describe("SignInForm", () => {
       target: { value: "123456" },
     });
 
-    fireEvent.click(screen.getByRole("button", { name: /sign in/i }));
+    fireEvent.click(screen.getByRole("button", { name: /Giriş Yap/i }));
 
-    expect(await screen.findByText("Sign In")).toBeInTheDocument();
+    expect(await screen.findByText("Giriş Yap")).toBeInTheDocument();
   });
 });
