@@ -28,7 +28,6 @@ const ServiceActivityTable = ({ service }: { service: ServiceModel }) => {
         fetchPoolActivities(service.poolId);
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDelete = async (activityId: string) => {

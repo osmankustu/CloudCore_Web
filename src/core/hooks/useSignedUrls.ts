@@ -26,7 +26,6 @@ export function useSignedUrls(paths: (string | undefined | null)[]) {
     };
 
     fetchSignedUrls();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [validPaths.join(",")]); // memoization için güvenli string
 
   return signedMap;

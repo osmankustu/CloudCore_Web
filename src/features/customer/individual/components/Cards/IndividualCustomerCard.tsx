@@ -24,7 +24,6 @@ const IndividualCustomerCard = ({ id }: { id: string }) => {
     run(async () => {
       fetchIndividualCustomer(id);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (

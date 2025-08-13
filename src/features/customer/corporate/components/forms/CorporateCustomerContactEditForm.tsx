@@ -49,7 +49,6 @@ const CorporateCustomerContactEditForm = ({
       }
     };
     fetchFormData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [corporateCustomer]);
 
   useEffect(() => {
@@ -69,7 +68,6 @@ const CorporateCustomerContactEditForm = ({
       });
     }
     clearErrors();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const handleSave = async () => {

@@ -27,6 +27,10 @@ module.exports = [
         project: "./tsconfig.json",
       },
     },
+    linterOptions: {
+      // Bu satır yeni "no-unused-disable" karşılığı
+      reportUnusedDisableDirectives: "error",
+    },
     rules: {
       semi: ["error", "always"],
       quotes: ["error", "double"],
@@ -45,6 +49,15 @@ module.exports = [
       "@typescript-eslint/explicit-function-return-type": "off",
       "react/react-in-jsx-scope": "off",
       "react-hooks/exhaustive-deps": "off",
+      // "no-unused-disable" artık yok, kaldırdık
     },
+    overrides: [
+      {
+        files: ["eslint.config.cjs"],
+        rules: {
+          "@typescript-eslint/no-require-imports": "off",
+        },
+      },
+    ],
   },
 ];

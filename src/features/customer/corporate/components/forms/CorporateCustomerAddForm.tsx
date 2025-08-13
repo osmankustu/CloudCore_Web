@@ -33,7 +33,6 @@ const CorporateCustomerAddForm = ({
 
   useEffect(() => {
     clearErrors?.();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

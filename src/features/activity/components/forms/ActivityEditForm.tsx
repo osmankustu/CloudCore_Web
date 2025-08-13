@@ -51,7 +51,6 @@ const ActivityEditForm = ({
     run(async () => {
       fetchActivity(activityId);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {
