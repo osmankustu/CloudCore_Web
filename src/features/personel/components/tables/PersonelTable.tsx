@@ -10,9 +10,9 @@ import TableButton from "@/components/ui/button/TableButton";
 import { Modal } from "@/components/ui/modal";
 import Spinner from "@/components/ui/spinner/Spinner";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
+import { rowVariant } from "@/core/constants/constants.animate";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { FilterField } from "@/core/models/requests/DynamicQuery";
 import { PageRequest } from "@/core/models/requests/PageRequest";
 import { formatDate } from "@/core/utils/dateFormater";
 import { QueryParserForPageRequest } from "@/core/utils/queryParser";
@@ -37,29 +37,7 @@ const PersonelTable = () => {
     setDynamicQuery,
   } = usePersonelStore();
   const { run } = useRequestAction();
-  const filteredFields: FilterField[] = [
-    { label: "Adına Göre", value: "FirstName", type: "string" },
-    { label: "Soyadına Göre", value: "LastName", type: "string" },
-    { label: "Departmana Göre", value: "Department", type: "string" },
-    { label: "Pozisyona Göre", value: "JobTitle", type: "string" },
-    { label: "E-posta Adresine Göre", value: "Email", type: "string" },
-    { label: "İşe Giriş Tarihine Göre", value: "HireDate", type: "date" },
-    { label: "Doğum Tarihine Göre", value: "BirthDate", type: "date" },
-    { label: "Oluşturma Tarihine Göre", value: "CreateAt", type: "date" },
-    { label: "Güncelleme Tarihine Göre", value: "UpdateAt", type: "date" },
-    { label: "Silinme Tarihine Göre", value: "DeleteAt", type: "date" },
-  ];
-  const rowVariant = {
-    hidden: { opacity: 0, y: 10 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.3,
-      },
-    }),
-  };
+
   const handleChangeSearchBox = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsDynamic(true);
     setDynamicQuery({
@@ -81,37 +59,16 @@ const PersonelTable = () => {
     });
   }, [pageRequest.pageIndex, pageRequest.pageSize, isDynamic, dynamicQuery]);
 
-  const dropFilter = (status: boolean) => {
-    if (status) {
-      setDynamicQuery({
-        filter: {},
-        sort: [],
-      });
-    }
-  };
-
   return (
     // toDo next time refactoring for queryfilter card data scheme
     <>
-      {/* {visible ? (
-        <FilteredQueryCard
-          data={[]}
-          filteredFields={filteredFields}
-          clearFilter={(status: boolean) => {
-            dropFilter(status);
-            setIsDynamic(false);
-          }}
-          onApply={query => {
-            setIsDynamic(true);
-            setDynamicQuery(query);
-          }}
-        />
-      ) : null} */}
-
       <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/[0.03]">
         <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-50">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">Personeller</h3>
+            <FilterTableButton
+              text={!visible ? "Filtrele" : "Filtre Arayüzünü Gizle"}
+              onClick={() => setVisible(!visible)}
+            />
             <input
               type="text"
               placeholder="Personel adı ile ara..."
@@ -120,19 +77,14 @@ const PersonelTable = () => {
             />
           </div>
 
-          <div className="flex items-center gap-3">
-            <FilterTableButton
-              text={!visible ? "Filtrele" : "Filtre Arayüzünü Gizle"}
-              onClick={() => setVisible(!visible)}
-            />
-            <TableButton
-              text={"Personel Oluştur"}
-              onClick={() => {
-                openModal();
-              }}
-            />
-          </div>
+          <TableButton
+            text={"Personel Oluştur"}
+            onClick={() => {
+              openModal();
+            }}
+          />
         </div>
+
         <div className="max-w-full overflow-x-auto">
           <Table>
             {/* Table Header */}
@@ -203,6 +155,25 @@ const PersonelTable = () => {
                         className="flex items-center justify-center py-10"
                       >
                         <Spinner />
+                      </motion.div>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              ) : !personels?.items ? (
+                <TableBody key="data">
+                  <TableRow>
+                    <TableCell colSpan={10}>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex items-center justify-center py-10"
+                      >
+                        <p className="text-theme-md font-medium text-gray-800 dark:text-white/90">
+                          Personel bulunamadı. Lütfen filtreleri kontrol edin veya yeni bir personel
+                          ekleyin.
+                        </p>
                       </motion.div>
                     </TableCell>
                   </TableRow>

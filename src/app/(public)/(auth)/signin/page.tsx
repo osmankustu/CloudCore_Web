@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 
+import Spinner from "@/components/ui/spinner/Spinner";
 import SignInForm from "@/features/auth/components/SignInForm";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function SignIn() {
   return (
-    <Suspense fallback={<div>Yükleniyor...</div>}>
+    <Suspense fallback={<Spinner />}>
       <SignInForm />
     </Suspense>
   );

@@ -10,6 +10,7 @@ import TableButton from "@/components/ui/button/TableButton";
 import { Modal } from "@/components/ui/modal";
 import Spinner from "@/components/ui/spinner/Spinner";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
+import { rowVariant, tableFadeVariant } from "@/core/constants/constants.animate";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { PageRequest } from "@/core/models/requests/PageRequest";
@@ -37,24 +38,6 @@ const CorporateCustomerTable = () => {
     fetchCorporateCustomers,
     fetchCorporateOptions,
   } = useCorporateCustomerStore();
-
-  const tableFadeVariant = {
-    hidden: { opacity: 0, scale: 0.97 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    exit: { opacity: 0, scale: 0.97, transition: { duration: 0.3 } },
-  };
-
-  const rowVariant = {
-    hidden: { opacity: 0, y: 10 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.3,
-      },
-    }),
-  };
 
   const handleChangeSearchBox = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsDynamic(true);
@@ -89,9 +72,10 @@ const CorporateCustomerTable = () => {
       <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/[0.03]">
         <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-50">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-              Kurumsal Müşteriler
-            </h3>
+            <FilterTableButton
+              text={!visible ? "Filtrele" : "Filtre Arayüzünü Gizle"}
+              onClick={() => setVisible(!visible)}
+            />
 
             <input
               type="text"
@@ -102,18 +86,12 @@ const CorporateCustomerTable = () => {
             />
           </div>
 
-          <div className="flex items-center gap-3">
-            <FilterTableButton
-              text={!visible ? "Filtrele" : "Filtre Arayüzünü Gizle"}
-              onClick={() => setVisible(!visible)}
-            />
-            <TableButton
-              text={"Firma Oluştur"}
-              onClick={() => {
-                openModal();
-              }}
-            />
-          </div>
+          <TableButton
+            text={"Firma Oluştur"}
+            onClick={() => {
+              openModal();
+            }}
+          />
         </div>
 
         {/* Table */}
@@ -184,6 +162,25 @@ const CorporateCustomerTable = () => {
                     </TableCell>
                   </TableRow>
                 </TableBody>
+              ) : !corporateCustomers?.items ? (
+                <TableBody key="data">
+                  <TableRow>
+                    <TableCell colSpan={10}>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex items-center justify-center py-10"
+                      >
+                        <p className="text-theme-md font-medium text-gray-800 dark:text-white/90">
+                          Müşteri bulunamadı. Lütfen filtreleri kontrol edin veya yeni bir müşteri
+                          ekleyin.
+                        </p>
+                      </motion.div>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
               ) : (
                 <motion.tbody
                   key="data"
@@ -247,23 +244,23 @@ const CorporateCustomerTable = () => {
             pageSizes={[20, 50]}
             onChangeSize={size =>
               router.push(
-                `/customers/corporate/?pageIndex=${pageRequest.pageIndex}&pageSize=${size}`,
+                `/management/customers/corporate/?pageIndex=${pageRequest.pageIndex}&pageSize=${size}`,
               )
             }
             currentPage={corporateCustomers.index + 1}
             onBack={() =>
               router.push(
-                `/customers/corporate/?pageIndex=${pageRequest.pageIndex - 1}&pageSize=${pageRequest.pageSize}`,
+                `/management/customers/corporate/?pageIndex=${pageRequest.pageIndex - 1}&pageSize=${pageRequest.pageSize}`,
               )
             }
             onChange={page =>
               router.push(
-                `/customers/corporate/?pageIndex=${page}&pageSize=${pageRequest.pageSize}`,
+                `/management/customers/corporate/?pageIndex=${page}&pageSize=${pageRequest.pageSize}`,
               )
             }
             onNext={() =>
               router.push(
-                `/customers/corporate/?pageIndex=${pageRequest.pageIndex + 1}&pageSize=${pageRequest.pageSize}`,
+                `/management/customers/corporate/?pageIndex=${pageRequest.pageIndex + 1}&pageSize=${pageRequest.pageSize}`,
               )
             }
             totalPages={corporateCustomers.pages}

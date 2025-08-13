@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 import Spinner from "@/components/ui/spinner/Spinner";
+import { fadeVariants } from "@/core/constants/constants.animate";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 
 import { useIndividualCustomerStore } from "../../store/useIndividualCustomerStore";
@@ -24,12 +25,6 @@ const IndividualCustomerCard = ({ id }: { id: string }) => {
       fetchIndividualCustomer(id);
     });
   }, [id]);
-
-  const fadeVariants = {
-    initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
-  };
 
   return (
     <div>

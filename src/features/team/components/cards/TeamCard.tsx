@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 import Spinner from "@/components/ui/spinner/Spinner";
+import { fadeVariants } from "@/core/constants/constants.animate";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 
 import { useTeamStore } from "../../store/useTeamStore";
@@ -14,12 +15,6 @@ const TeamCard = ({ id }: { id: string }) => {
   const { team, fetchTeam } = useTeamStore();
   const { run } = useRequestAction();
   const [activeTab, setActiveTab] = useState("GeneralInfo");
-
-  const fadeVariants = {
-    initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
-  };
 
   useEffect(() => {
     run(async () => {

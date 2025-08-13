@@ -1,11 +1,15 @@
 export function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleString("tr-TR", {
+  const date = new Date(dateString).toLocaleString("tr-TR", {
     year: "numeric",
     month: "long",
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
   });
+
+  if (date === "Invalid Date" || date === "1 Ocak 1 00:00") return "-";
+
+  return date;
 }
 
 export function toInputDateFormat(isoString: string) {

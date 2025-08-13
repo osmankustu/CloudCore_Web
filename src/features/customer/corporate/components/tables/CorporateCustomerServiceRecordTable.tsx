@@ -6,10 +6,10 @@ import Pagination from "@/components/tables/Pagination";
 import FilterTableButton from "@/components/ui/button/FilterTableButton";
 import { Table, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { DynamicQuery, FilterField } from "@/core/models/requests/DynamicQuery";
+import { DynamicQuery } from "@/core/models/requests/DynamicQuery";
 import { PageRequest } from "@/core/models/requests/PageRequest";
-import { Paginated } from "@/core/network/api-results/Paginated";
 import { QueryParserForPageRequest } from "@/core/utils/queryParser";
+import { useServiceStore } from "@/features/service/store/useServiceStore";
 
 import { CorporateCustomerModel } from "../../model/corporateCustomer";
 
@@ -21,7 +21,7 @@ const CorporateCustomerServiceRecordTable = ({
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageRequest: PageRequest = QueryParserForPageRequest(searchParams!);
-  const [serviceRecords, setServiceRecords] = useState<Paginated<unknown> | undefined>();
+  const { services } = useServiceStore();
   const [dynamicQuery, setDynamicQuery] = useState<DynamicQuery>({
     sort: [],
     filter: {
@@ -38,7 +38,7 @@ const CorporateCustomerServiceRecordTable = ({
 
   useEffect(() => {
     // const fetchData = async () => {
-    //   const data = await GetListByDynamicServiceRecord(
+    //   const data = await GetListByDynamicService(
     //     pageRequest.pageIndex,
     //     pageRequest.pageSize,
     //     dynamicQuery!,
@@ -46,63 +46,12 @@ const CorporateCustomerServiceRecordTable = ({
     //   setServiceRecords(data);
     // };
     // fetchData();
-    // // run(async()=>{
-    // // })
+    // run(async()=>{
+    // })
   }, [pageRequest.pageIndex, pageRequest.pageSize, dynamicQuery]);
-
-  // FİLTER SECTİON
-  const filteredFields: Array<FilterField> = [
-    { label: "Firma Adına Göre", value: "Company.Name", type: "string" },
-    { label: "Kayıt Id'sine Göre", value: "Id", type: "string" },
-    { label: "Kayıt Koduna Göre", value: "RecordCode", type: "string" },
-    {
-      label: "Servis Durumu Göre",
-      value: "ServicePool.ServiceStatus",
-      type: "enum",
-    },
-    { label: "Öncelik Durumuna Göre", value: "Priority", type: "enum" },
-    { label: "Oluşturma Tarihine Göre ", value: "CreateAt", type: "date" },
-    { label: "Güncelleme Tarihine Göre ", value: "UpdateAt", type: "date" },
-    { label: "Silinme Tarihine Göre ", value: "DeleteAt", type: "date" },
-  ];
-
-  const applyFilter = (query: DynamicQuery) => {
-    setDynamicQuery(prev => ({
-      ...prev,
-      sort: query.sort,
-      filter: {
-        ...prev.filter,
-        filters: query.filter.filters,
-      },
-    }));
-  };
-
-  const dropFilter = (status: boolean) => {
-    if (status) {
-      console.log("yan filtre temizlendi");
-      setDynamicQuery(prev => ({
-        ...prev,
-        sort: [],
-        filter: {
-          ...prev.filter,
-          filters: [],
-        },
-      }));
-    }
-  };
 
   return (
     <>
-      {visible ? (
-        <>
-          {/* <FilteredByIdQueryCard
-            filteredFields={filteredFields}
-            onApply={query => applyFilter(query)}
-            clearFilter={status => dropFilter(status)}
-          /> */}
-        </>
-      ) : null}
-
       <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/[0.03]">
         <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-50">
@@ -229,18 +178,18 @@ const CorporateCustomerServiceRecordTable = ({
         </div>
       </div>
 
-      {serviceRecords ? (
+      {services ? (
         <>
           <Pagination
-            items={serviceRecords.count}
-            pageSize={serviceRecords.size}
+            items={services.count}
+            pageSize={services.size}
             pageSizes={[20, 50]}
             onChangeSize={size =>
               router.push(
                 `/customers/corporate/?pageIndex=${pageRequest.pageIndex}&pageSize=${size}`,
               )
             }
-            currentPage={serviceRecords.index + 1}
+            currentPage={services.index + 1}
             onBack={() =>
               router.push(
                 `/customers/corporate/?pageIndex=${pageRequest.pageIndex - 1}&pageSize=${pageRequest.pageSize}`,
@@ -256,7 +205,7 @@ const CorporateCustomerServiceRecordTable = ({
                 `/customers/corporate/?pageIndex=${pageRequest.pageIndex + 1}&pageSize=${pageRequest.pageSize}`,
               )
             }
-            totalPages={serviceRecords.pages}
+            totalPages={services.pages}
             key={1}
           />
         </>

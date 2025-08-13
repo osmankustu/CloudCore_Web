@@ -23,7 +23,7 @@ const TeamMetaCard = ({
 }) => {
   const { run, isLoading } = useRequestAction();
   const router = useRouter();
-  const { errors, clearErrors } = useFormErrors();
+  const { clearErrors } = useFormErrors();
   const { isOpen, openModal, closeModal } = useModal();
   const handleDelete = async () => {
     run(async () => {
