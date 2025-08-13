@@ -48,6 +48,7 @@ const CorporateCustomerContactEditForm = ({
         });
       }
     };
+    fetchFormData();
   }, [corporateCustomer]);
 
   useEffect(() => {

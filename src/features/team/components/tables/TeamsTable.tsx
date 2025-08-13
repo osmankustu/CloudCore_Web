@@ -9,9 +9,9 @@ import FilterTableButton from "@/components/ui/button/FilterTableButton";
 import { Modal } from "@/components/ui/modal";
 import Spinner from "@/components/ui/spinner/Spinner";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
+import { rowVariant, tableFadeVariant } from "@/core/constants/constants.animate";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { FilterField } from "@/core/models/requests/DynamicQuery";
 import { PageRequest } from "@/core/models/requests/PageRequest";
 import { formatDate } from "@/core/utils/dateFormater";
 import { QueryParserForPageRequest } from "@/core/utils/queryParser";
@@ -38,43 +38,6 @@ const TeamsTable = () => {
     setDynamicQuery,
   } = useTeamStore();
 
-  const filteredFields: FilterField[] = [
-    { label: "Firmaya Göre", value: "Id", type: "string" },
-    { label: "Adına Göre", value: "Name", type: "string" },
-    { label: "Vergi Numarasına Göre", value: "TaxNumber", type: "string" },
-    { label: "Sekörüne Göre", value: "Industry", type: "string" },
-    { label: "Firma Telefonuna Göre", value: "PhoneNumber", type: "string" },
-    { label: "Firma E-Postasına Göre", value: "Email", type: "string" },
-    { label: "Y. Adına Göre", value: "ContactPerson", type: "string" },
-    {
-      label: "Y. Numarasına Göre",
-      value: "ContactPhoneNumber",
-      type: "string",
-    },
-    { label: "Y E-posta Adresine Göre", value: "ContactEmail", type: "string" },
-    { label: "Oluşturma Tarihine Göre", value: "CreateAt", type: "date" },
-    { label: "Güncelleme Tarihine Göre", value: "UpdateAt", type: "date" },
-    { label: "Silinme Tarihine Göre", value: "DeleteAt", type: "date" },
-  ];
-
-  const tableFadeVariant = {
-    hidden: { opacity: 0, scale: 0.97 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    exit: { opacity: 0, scale: 0.97, transition: { duration: 0.3 } },
-  };
-
-  const rowVariant = {
-    hidden: { opacity: 0, y: 10 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.3,
-      },
-    }),
-  };
-
   const handleChangeSearchBox = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsDynamic(true);
     setDynamicQuery({
@@ -88,15 +51,6 @@ const TeamsTable = () => {
         filters: [],
       },
     });
-  };
-
-  const dropFilter = (status: boolean) => {
-    if (status) {
-      setDynamicQuery({
-        filter: {},
-        sort: [],
-      });
-    }
   };
 
   useEffect(() => {
@@ -113,24 +67,13 @@ const TeamsTable = () => {
 
   return (
     <>
-      {/* {visible ? (
-        <FilteredQueryCard
-          data={teamOptions}
-          filteredFields={filteredFields}
-          clearFilter={status => {
-            dropFilter(status);
-            setIsDynamic(false);
-          }}
-          onApply={query => {
-            setIsDynamic(true);
-            setDynamicQuery(query);
-          }}
-        />
-      ) : null} */}
       <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/[0.03]">
         <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-50">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">Ekipler</h3>
+            <FilterTableButton
+              text={!visible ? "Filtrele" : "Filtre Arayüzünü Gizle"}
+              onClick={() => setVisible(!visible)}
+            />
             <input
               type="text"
               name="value"
@@ -140,18 +83,12 @@ const TeamsTable = () => {
             />
           </div>
 
-          <div className="flex items-center gap-3">
-            <FilterTableButton
-              text={!visible ? "Filtrele" : "Filtre Arayüzünü Gizle"}
-              onClick={() => setVisible(!visible)}
-            />
-            <button
-              className="text-theme-sm shadow-theme-xs inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-              onClick={openModal}
-            >
-              Ekip Ekle
-            </button>
-          </div>
+          <button
+            className="text-theme-sm shadow-theme-xs inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
+            onClick={openModal}
+          >
+            Ekip Ekle
+          </button>
         </div>
         <div className="max-w-full overflow-x-auto">
           <Table>
@@ -217,6 +154,25 @@ const TeamsTable = () => {
                         className="flex items-center justify-center py-10"
                       >
                         <Spinner />
+                      </motion.div>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              ) : !teams?.items ? (
+                <TableBody key="data">
+                  <TableRow>
+                    <TableCell colSpan={10}>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex items-center justify-center py-10"
+                      >
+                        <p className="text-theme-md font-medium text-gray-800 dark:text-white/90">
+                          Ekip bulunamadı. Lütfen filtreleri kontrol edin veya yeni bir ekip
+                          ekleyin.
+                        </p>
                       </motion.div>
                     </TableCell>
                   </TableRow>

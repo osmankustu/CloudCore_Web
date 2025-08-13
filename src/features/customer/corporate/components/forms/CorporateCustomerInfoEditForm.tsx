@@ -48,6 +48,7 @@ const CorporateCustomerInfoEditForm = ({
         });
       }
     };
+    fetchFormData();
   }, [corporateCustomer]);
 
   useEffect(() => {

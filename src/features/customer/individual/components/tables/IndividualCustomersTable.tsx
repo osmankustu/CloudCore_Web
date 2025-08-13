@@ -10,6 +10,7 @@ import TableButton from "@/components/ui/button/TableButton";
 import { Modal } from "@/components/ui/modal";
 import Spinner from "@/components/ui/spinner/Spinner";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
+import { rowVariant } from "@/core/constants/constants.animate";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { PageRequest } from "@/core/models/requests/PageRequest";
@@ -64,42 +65,16 @@ const IndividualCustomersTable = () => {
     });
   }, []);
 
-  const dropFilter = (status: boolean) => {
-    if (status) {
-      setDynamicQuery({
-        filter: {},
-        sort: [],
-      });
-    }
-  };
-
-  const tableFadeVariant = {
-    hidden: { opacity: 0, scale: 0.97 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    exit: { opacity: 0, scale: 0.97, transition: { duration: 0.3 } },
-  };
-
-  const rowVariant = {
-    hidden: { opacity: 0, y: 10 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.3,
-      },
-    }),
-  };
-
   return (
     <>
       {/* Hader */}
       <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/[0.03]">
         <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-50">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-              Bireysel Müşteriler
-            </h3>
+            <FilterTableButton
+              text={!visible ? "Filtrele" : "Filtre Arayüzünü Gizle"}
+              onClick={() => setVisible(!visible)}
+            />
 
             <input
               type="text"
@@ -110,18 +85,12 @@ const IndividualCustomersTable = () => {
             />
           </div>
 
-          <div className="flex items-center gap-3">
-            <FilterTableButton
-              text={!visible ? "Filtrele" : "Filtre Arayüzünü Gizle"}
-              onClick={() => setVisible(!visible)}
-            />
-            <TableButton
-              text={"Müşteri Oluştur"}
-              onClick={() => {
-                openModal();
-              }}
-            />
-          </div>
+          <TableButton
+            text={"Müşteri Oluştur"}
+            onClick={() => {
+              openModal();
+            }}
+          />
         </div>
 
         <div className="max-w-full overflow-x-auto">
@@ -181,6 +150,25 @@ const IndividualCustomersTable = () => {
                         className="flex items-center justify-center py-10"
                       >
                         <Spinner />
+                      </motion.div>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              ) : !individualCustomers?.items ? (
+                <TableBody key="data">
+                  <TableRow>
+                    <TableCell colSpan={10}>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex items-center justify-center py-10"
+                      >
+                        <p className="text-theme-md font-medium text-gray-800 dark:text-white/90">
+                          Müşteri bulunamadı. Lütfen filtreleri kontrol edin veya yeni bir müşteri
+                          ekleyin.
+                        </p>
                       </motion.div>
                     </TableCell>
                   </TableRow>
@@ -246,23 +234,23 @@ const IndividualCustomersTable = () => {
             pageSizes={[20, 50]}
             onChangeSize={size =>
               router.push(
-                `/customers/individual/?pageIndex=${pageRequest.pageIndex}&pageSize=${size}`,
+                `/management/customers/individual/?pageIndex=${pageRequest.pageIndex}&pageSize=${size}`,
               )
             }
             currentPage={individualCustomers.index + 1}
             onBack={() =>
               router.push(
-                `/customers/individual/?pageIndex=${pageRequest.pageIndex - 1}&pageSize=${pageRequest.pageSize}`,
+                `/management/customers/individual/?pageIndex=${pageRequest.pageIndex - 1}&pageSize=${pageRequest.pageSize}`,
               )
             }
             onChange={page =>
               router.push(
-                `/customers/individual/?pageIndex=${page}&pageSize=${pageRequest.pageSize}`,
+                `/management/customers/individual/?pageIndex=${page}&pageSize=${pageRequest.pageSize}`,
               )
             }
             onNext={() =>
               router.push(
-                `/customers/individual/?pageIndex=${pageRequest.pageIndex + 1}&pageSize=${pageRequest.pageSize}`,
+                `/management/customers/individual/?pageIndex=${pageRequest.pageIndex + 1}&pageSize=${pageRequest.pageSize}`,
               )
             }
             totalPages={individualCustomers.pages}

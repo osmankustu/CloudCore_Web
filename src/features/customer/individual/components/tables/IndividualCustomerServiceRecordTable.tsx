@@ -18,48 +18,13 @@ const IndividualCustomerServiceRecordTable = ({
   const router = useRouter();
   const searchParams = useSearchParams();
   const pageRequest: PageRequest = QueryParserForPageRequest(searchParams!);
-  //service record models is not added next features add
-  // const [serviceRecords, setServiceRecords] = useState<Paginated<ServiceRecordModel> | undefined>();
-  // const [dynamicQuery, setDynamicQuery] = useState<DynamicQuery>({
-  //   sort: [],
-  //   filter: {
-  //     field: "CustomerId",
-  //     filters: [],
-  //     logic: "and",
-  //     value: `${individualCustomer.id}`,
-  //     operator: "eq",
-  //     caseSensitive: false,
-  //   },
-  // });
   const [visible, setVisible] = useState<boolean>(false);
   const { run } = useRequestAction();
 
-  useEffect(() => {
-    // const fetchData = async () => {
-    //   const data = await GetListByDynamicServiceRecord(
-    //     pageRequest.pageIndex,
-    //     pageRequest.pageSize,
-    //     dynamicQuery!,
-    //   );
-    //   setServiceRecords(data);
-    // };
-    // fetchData();
-    // run(async()=>{
-    // })
-  }, [pageRequest.pageIndex, pageRequest.pageSize]);
+  useEffect(() => {}, [pageRequest.pageIndex, pageRequest.pageSize]);
 
   return (
     <>
-      {/* {visible ? (
-        <>
-          <FilteredByIdQueryCard
-            filteredFields={filteredFields}
-            onApply={query => applyFilter(query)}
-            clearFilter={status => dropFilter(status)}
-          />
-        </>
-      ) : null} */}
-
       <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/[0.03]">
         <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-50">

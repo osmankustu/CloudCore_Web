@@ -16,7 +16,7 @@ type Address = {
 };
 
 const CorporateCustomerAddressCard = () => {
-  const { isOpen, openModal, closeModal } = useModal();
+  const { closeModal } = useModal();
   const mockAddresses: Address[] = [
     {
       id: "1",
@@ -33,7 +33,7 @@ const CorporateCustomerAddressCard = () => {
       taxId: "TAX-654321",
     },
   ];
-  const [addresses, setAddresses] = useState<Address[]>(mockAddresses);
+  const [addresses] = useState<Address[]>(mockAddresses);
   const [selectedAddress, setSelectedAddress] = useState<Address>();
   const [isModalOpen, setModalOpen] = useState(false);
 

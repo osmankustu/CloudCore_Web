@@ -18,7 +18,7 @@ const CorporateCustomerAddForm = ({
   isOpen: boolean;
   onClose: () => void;
 }) => {
-  const { run, isLoading } = useRequestAction();
+  const { run } = useRequestAction();
   const { errors, clearErrors } = useFormErrors();
   const [formData, setFormData] = useState<CorporateCustomerAddModel>({
     authorizedEmail: "",

@@ -3,6 +3,8 @@ layer(base);
 
 @import "tailwindcss";
 @import "react-datepicker/dist/react-datepicker.css";
+@import "react-pdf/src/Page/AnnotationLayer.css";
+@import "react-pdf/src/Page/TextLayer.css";
 
 @custom-variant dark (&:is(.dark *));
 

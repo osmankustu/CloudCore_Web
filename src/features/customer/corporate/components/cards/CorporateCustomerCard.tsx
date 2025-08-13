@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 import Spinner from "@/components/ui/spinner/Spinner";
+import { fadeVariants } from "@/core/constants/constants.animate";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 
 import { useCorporateCustomerStore } from "../../store/useCorporateCustomerStore";
@@ -15,18 +16,12 @@ import CorporateCustomerMetaCard from "./CorporateCustomerMetaCard";
 const CorporateCustomerCard = ({ id }: { id: string }) => {
   const [activeTab, setActiveTab] = useState("GeneralInformation");
   const { run } = useRequestAction();
-  const { corporateCustomer, isLoading, fetchCorporateCustomer } = useCorporateCustomerStore();
+  const { corporateCustomer, fetchCorporateCustomer } = useCorporateCustomerStore();
 
   useEffect(() => {
     if (!id) return;
     run(() => fetchCorporateCustomer(id));
   }, []);
-
-  const fadeVariants = {
-    initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
-  };
 
   return (
     <>

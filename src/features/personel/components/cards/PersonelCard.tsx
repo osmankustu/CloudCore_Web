@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import Spinner from "@/components/ui/spinner/Spinner";
+import { fadeVariants } from "@/core/constants/constants.animate";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { usePersonelStore } from "@/features/personel/store/usePersonelStore";
 
@@ -22,11 +23,6 @@ const PersonelCard = ({ personelId }: { personelId: string }) => {
     run(() => fetchPersonel(personelId));
   }, []);
 
-  const fadeVariants = {
-    initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
-  };
   return (
     <>
       <div>

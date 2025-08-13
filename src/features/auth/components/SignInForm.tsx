@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
 
 import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
@@ -18,7 +19,7 @@ import { useAuthStore } from "../store/useAuthStore";
 export default function SignInForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams?.get("callbackUrl") || "/dashboard";
+  const callbackUrl = searchParams?.get("callbackUrl") || "/management";
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const { isOpen, openModal, closeModal } = useModal();
@@ -66,22 +67,23 @@ export default function SignInForm() {
             href="/"
             className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
           >
-            /- Back to dashboard
+            <FaArrowLeft />
+            <p className="pl-2">Geri dön</p>
           </Link>
         </div>
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
           <div>
             <div className="mb-5 sm:mb-8">
               <h1 className="text-title-sm sm:text-title-md mb-2 font-semibold text-gray-800 dark:text-white/90">
-                Sign In
+                Giriş Yap
               </h1>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Enter your email and password to sign in!
+                E-posta adresinizi veya telefon numaranızı kullanarak giriş yapabilirsiniz!
               </p>
             </div>
             <div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
-                {/* <button className="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
+                <button className="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                   <svg
                     width="20"
                     height="20"
@@ -106,9 +108,9 @@ export default function SignInForm() {
                       fill="#EB4335"
                     />
                   </svg>
-                  Sign in with Google
-                </button> */}
-                {/* <button className="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
+                  E-Posta
+                </button>
+                <button className="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                   <svg
                     width="21"
                     className="fill-current"
@@ -119,23 +121,14 @@ export default function SignInForm() {
                   >
                     <path d="M15.6705 1.875H18.4272L12.4047 8.75833L19.4897 18.125H13.9422L9.59717 12.4442L4.62554 18.125H1.86721L8.30887 10.7625L1.51221 1.875H7.20054L11.128 7.0675L15.6705 1.875ZM14.703 16.475H16.2305L6.37054 3.43833H4.73137L14.703 16.475Z" />
                   </svg>
-                  Sign in with X
-                </button> */}
+                  Telefon Numarası
+                </button>
               </div>
-              <div className="relative py-3 sm:py-5">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-200 dark:border-gray-800"></div>
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="bg-white p-2 text-gray-400 sm:px-5 sm:py-2 dark:bg-gray-900">
-                    Or
-                  </span>
-                </div>
-              </div>
-              <div className="space-y-6">
+
+              <div className="mt-5 space-y-6">
                 <div>
                   <Label>
-                    Email <span className="text-error-500">*</span>{" "}
+                    E-Posta <span className="text-error-500">*</span>{" "}
                   </Label>
                   <Input
                     placeholder="info@gmail.com"
@@ -146,7 +139,7 @@ export default function SignInForm() {
                 </div>
                 <div>
                   <Label>
-                    Password <span className="text-error-500">*</span>{" "}
+                    Şifre <span className="text-error-500">*</span>{" "}
                   </Label>
                   <div className="relative">
                     <Input
@@ -171,33 +164,21 @@ export default function SignInForm() {
                   <div className="flex items-center gap-3">
                     <Checkbox checked={isChecked} onChange={setIsChecked} />
                     <span className="text-theme-sm block font-normal text-gray-700 dark:text-gray-400">
-                      Keep me logged in
+                      Beni hatırla
                     </span>
                   </div>
                   <Link
                     href="/reset-password"
                     className="text-brand-500 hover:text-brand-600 dark:text-brand-400 text-sm"
                   >
-                    Forgot password?
+                    Şifremi unuttum?
                   </Link>
                 </div>
                 <div>
                   <Button className="w-full" size="sm" onClick={() => handleLogin()}>
-                    Sign in
+                    Giriş Yap
                   </Button>
                 </div>
-              </div>
-
-              <div className="mt-5">
-                <p className="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
-                  Don&apos;t have an account? {""}
-                  <Link
-                    href="/signup"
-                    className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
-                  >
-                    Sign Up
-                  </Link>
-                </p>
               </div>
             </div>
           </div>
