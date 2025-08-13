@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import Pagination from "@/components/tables/Pagination";
 import FilterTableButton from "@/components/ui/button/FilterTableButton";
 import { Table, TableCell, TableHeader, TableRow } from "@/components/ui/table";
-import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { DynamicQuery } from "@/core/models/requests/DynamicQuery";
 import { PageRequest } from "@/core/models/requests/PageRequest";
 import { QueryParserForPageRequest } from "@/core/utils/queryParser";
@@ -22,7 +21,7 @@ const CorporateCustomerServiceRecordTable = ({
   const searchParams = useSearchParams();
   const pageRequest: PageRequest = QueryParserForPageRequest(searchParams!);
   const { services } = useServiceStore();
-  const [dynamicQuery, setDynamicQuery] = useState<DynamicQuery>({
+  const [dynamicQuery] = useState<DynamicQuery>({
     sort: [],
     filter: {
       field: "CompanyId",
@@ -34,7 +33,7 @@ const CorporateCustomerServiceRecordTable = ({
     },
   });
   const [visible, setVisible] = useState<boolean>(false);
-  const { run } = useRequestAction();
+  //const { run } = useRequestAction();
 
   useEffect(() => {
     // const fetchData = async () => {

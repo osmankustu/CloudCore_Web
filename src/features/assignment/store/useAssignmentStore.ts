@@ -10,7 +10,7 @@ interface AssignmentState {
   isLoading: boolean;
 }
 
-export const useAssignmentStore = create<AssignmentState>((set, get) => ({
+export const useAssignmentStore = create<AssignmentState>(set => ({
   assignment: null,
   isLoading: false,
 
@@ -20,8 +20,9 @@ export const useAssignmentStore = create<AssignmentState>((set, get) => ({
       const data = await GetByServiceRecordIdAssignment(serviceId);
 
       set({ assignment: data });
+      // eslint-disable-next-line unused-imports/no-unused-vars
     } catch (error) {
-      console.error("fetchCustomers error", error);
+      // Logging
     } finally {
       set({ isLoading: false });
     }

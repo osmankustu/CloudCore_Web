@@ -57,12 +57,14 @@ const IndividualCustomersTable = () => {
     run(async () => {
       fetchIndividualCustomers(pageRequest.pageIndex, pageRequest.pageSize);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageRequest.pageIndex, pageRequest.pageSize, isDynamic, dynamicQuery]);
 
   useEffect(() => {
     run(async () => {
       fetchIndividualOptions();
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

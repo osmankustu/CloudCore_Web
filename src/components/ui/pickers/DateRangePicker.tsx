@@ -38,6 +38,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ startDate, endDate, o
 
   useEffect(() => {
     handle();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate, endDate]);
 
   const handle = () => {

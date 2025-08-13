@@ -16,11 +16,12 @@ import CorporateCustomerMetaCard from "./CorporateCustomerMetaCard";
 const CorporateCustomerCard = ({ id }: { id: string }) => {
   const [activeTab, setActiveTab] = useState("GeneralInformation");
   const { run } = useRequestAction();
-  const { corporateCustomer, isLoading, fetchCorporateCustomer } = useCorporateCustomerStore();
+  const { corporateCustomer, fetchCorporateCustomer } = useCorporateCustomerStore();
 
   useEffect(() => {
     if (!id) return;
     run(() => fetchCorporateCustomer(id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

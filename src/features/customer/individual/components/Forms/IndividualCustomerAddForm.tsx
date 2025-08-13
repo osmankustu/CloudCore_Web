@@ -20,7 +20,7 @@ const IndividualCustomerAddForm = ({
   onClose: () => void;
 }) => {
   const { errors, clearErrors } = useFormErrors();
-  const { run, isLoading } = useRequestAction();
+  const { run } = useRequestAction();
   const [formData, setFormData] = useState<IndividualCustomerAddModel | undefined>();
   const router = useRouter();
   const initialFormData: IndividualCustomerAddModel = {
@@ -33,6 +33,7 @@ const IndividualCustomerAddForm = ({
   useEffect(() => {
     setFormData(initialFormData);
     clearErrors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -54,6 +54,7 @@ export const useCorporateCustomerStore = create<CorporateCustomerState>((set, ge
           : await GetListCorporateCustomer(pageIndex, pageSize);
 
       set({ corporateCustomers: data });
+      // eslint-disable-next-line unused-imports/no-unused-vars
     } catch (error) {
       // example usage Logger.w()
     } finally {
@@ -67,6 +68,7 @@ export const useCorporateCustomerStore = create<CorporateCustomerState>((set, ge
       const data = await GetByIdCorporateCustomer(id);
 
       set({ corporateCustomer: data });
+      // eslint-disable-next-line unused-imports/no-unused-vars
     } catch (error) {
       // example usage Logger.w()
     } finally {
@@ -79,6 +81,7 @@ export const useCorporateCustomerStore = create<CorporateCustomerState>((set, ge
     try {
       const data = await GetAllCorporateCustomers();
       set({ corporateOptions: data });
+      // eslint-disable-next-line unused-imports/no-unused-vars
     } catch (error) {
       // example usage Logger.w()
     } finally {

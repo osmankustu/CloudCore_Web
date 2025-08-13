@@ -35,8 +35,6 @@ const SingleDatePicker = ({
     onSelected(selectedDateStr!);
   };
 
-  const startDate: Date = new Date();
-
   return (
     <>
       <div className="w-full">

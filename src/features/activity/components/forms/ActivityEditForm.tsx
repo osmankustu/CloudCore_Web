@@ -45,12 +45,13 @@ const ActivityEditForm = ({
 
   const { service, fetchService } = useServiceStore();
 
-  const { errors, clearErrors } = useFormErrors();
+  const { clearErrors } = useFormErrors();
 
   useEffect(() => {
     run(async () => {
       fetchActivity(activityId);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {
@@ -113,7 +114,7 @@ const ActivityEditForm = ({
           documentFormData.append("companyId", service!.customerId);
           documentFormData.append("recordCode", service!.recordCode);
           documentFormData.append("serviceRecordId", service!.id);
-          files.forEach((file, index) => {
+          files.forEach(file => {
             documentFormData.append("files", file); // 'files' backend ile uyumlu olmalı
           });
 

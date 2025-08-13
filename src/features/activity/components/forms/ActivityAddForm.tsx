@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import React, { useCallback, useState } from "react";

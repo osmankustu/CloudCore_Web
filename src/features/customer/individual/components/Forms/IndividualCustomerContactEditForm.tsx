@@ -42,6 +42,7 @@ const IndividualCustomerContactUpdateForm = ({
         createAt: individualCustomer.createAt,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [individualCustomer]);
 
   useEffect(() => {
@@ -57,6 +58,7 @@ const IndividualCustomerContactUpdateForm = ({
       });
     }
     clearErrors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const handleSave = async () => {
