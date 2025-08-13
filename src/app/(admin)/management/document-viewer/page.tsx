@@ -6,14 +6,12 @@ import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import Spinner from "@/components/ui/spinner/Spinner";
 import DocumentViewer from "@/features/document/components/cards/documentViewer";
 
-const page = ({ params }: { params: { fileType: string; url: string } }) => {
+const page = () => {
   return (
     <div>
       <PageBreadcrumb pageTitle={"Döküman Görüntüleyici"} />
       <div>
-        <Suspense fallback={<Spinner />}>
-          {<DocumentViewer fileType={params.fileType} url={params.url} />}
-        </Suspense>
+        <Suspense fallback={<Spinner />}>{<DocumentViewer />}</Suspense>
       </div>
     </div>
   );
