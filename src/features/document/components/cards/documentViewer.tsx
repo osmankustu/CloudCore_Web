@@ -16,6 +16,8 @@ export default function DocumentViewer() {
   const fileType = searchParams?.get("fileType") ?? "";
   const url = searchParams?.get("url") ?? "";
 
+  if (!url && fileType) return <div>Document not selected</div>;
+
   if (fileType === "application/pdf") {
     return (
       <div style={{ height: "80vh", overflow: "auto" }}>
