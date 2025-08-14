@@ -13,8 +13,13 @@ export async function LoginForApp(loginModel: LoginModel) {
       });
     }
     return res;
-  } catch (error) {
-    appLogger.log("error", "Login", { error });
+  } catch (error: any) {
+    appLogger.log("error", "Login", {
+      message: error?.message || "Unknown error",
+      stack: error?.stack,
+      response: error?.response?.data, // Axios spesifik
+      status: error?.response?.status,
+    });
     throw error;
   }
 }
