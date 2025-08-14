@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 import { FormErrorProvider } from "@/core/context/FormErrorContext";
 import { useSidebar } from "@/core/context/SidebarContext";
 import AppHeader from "@/core/layout/AppHeader";
@@ -12,8 +11,9 @@ import { usePerformanceTracking } from "@/core/hooks/log/usePerformanceTracking"
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const { isExpanded, isHovered, isMobileOpen } = useSidebar();
-  useRouteTracking();
-  usePerformanceTracking();
+  // useRouteTracking();
+  // usePerformanceTracking();
+
   // Dynamic class for main content margin based on sidebar state
   const mainContentMargin = isMobileOpen
     ? "ml-0"
