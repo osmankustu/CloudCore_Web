@@ -2,7 +2,7 @@ import React from "react";
 
 import { Modal } from "@/components/ui/modal";
 import { useModal } from "@/core/hooks/useModal";
-import { formatDate } from "@/core/utils/dateFormater";
+import { formatDate } from "@/core/utils/formatter/dateFormater";
 
 import { TeamModel } from "../../model/team";
 import TeamInfoEditForm from "../forms/TeamInfoEditForm";

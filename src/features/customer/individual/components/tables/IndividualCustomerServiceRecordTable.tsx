@@ -6,7 +6,7 @@ import FilterTableButton from "@/components/ui/button/FilterTableButton";
 import { Table, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { PageRequest } from "@/core/models/requests/PageRequest";
-import { QueryParserForPageRequest } from "@/core/utils/queryParser";
+import { QueryParserForPageRequest } from "@/core/utils/formatter/queryParser";
 
 import { IndividualCustomerModel } from "../../model/IndividualCustomer";
 

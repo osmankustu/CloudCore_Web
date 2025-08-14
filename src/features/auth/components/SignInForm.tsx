@@ -12,7 +12,7 @@ import { Modal } from "@/components/ui/modal";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 
-import { useUserStore } from "../../user/store/useUserStore";
+import { useUserStore } from "../../account/store/useUserStore";
 import { LoginModel } from "../model/LoginModel";
 import { useAuthStore } from "../store/useAuthStore";
 
@@ -175,7 +175,12 @@ export default function SignInForm() {
                   </Link>
                 </div>
                 <div>
-                  <Button className="w-full" size="sm" onClick={() => handleLogin()}>
+                  <Button
+                    data-track="login-btn"
+                    className="w-full"
+                    size="sm"
+                    onClick={() => handleLogin()}
+                  >
                     Giriş Yap
                   </Button>
                 </div>

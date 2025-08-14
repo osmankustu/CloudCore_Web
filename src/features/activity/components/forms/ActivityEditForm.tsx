@@ -15,7 +15,7 @@ import { SmoothSpinner } from "@/components/ui/spinner/SmoothSpinner";
 import { useFormErrors } from "@/core/context/FormErrorContext";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { showSuccess } from "@/core/utils/toastHelper";
+import { showSuccess } from "@/core/utils/toast/toastHelper";
 import { AddDocument } from "@/features/document/service/DocumentService";
 import { useServiceStore } from "@/features/service/store/useServiceStore";
 

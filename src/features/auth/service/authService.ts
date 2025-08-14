@@ -1,14 +1,20 @@
 import axiosInstance from "@/core/network/axiosInstance";
-import { GetRefreshToken } from "@/core/utils/tokenHandler";
+import { GetRefreshToken } from "@/core/utils/token/tokenHandler";
 
 import { LoginModel } from "../model/LoginModel";
+import { appLogger } from "@/core/utils/logger/logger";
 
 export async function LoginForApp(loginModel: LoginModel) {
   try {
     const res = await axiosInstance.post("/auth/login", loginModel);
+    if (res.status === 200) {
+      appLogger.log("info", "Login successful", {
+        userEmail: loginModel.email,
+      });
+    }
     return res;
   } catch (error) {
-    console.error("Error Logging transaction :", error);
+    appLogger.log("error", "Login", { error });
     throw error;
   }
 }

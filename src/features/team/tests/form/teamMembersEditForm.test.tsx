@@ -73,7 +73,7 @@ jest.mock("@/core/utils/toastHelper", () => ({
   showSuccess: jest.fn(),
 }));
 
-import { showSuccess } from "@/core/utils/toastHelper";
+import { showSuccess } from "@/core/utils/toast/toastHelper";
 
 import { UpdateTeam } from "../../service/teamService";
 

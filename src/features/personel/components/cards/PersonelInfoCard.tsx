@@ -2,7 +2,7 @@
 
 import { Modal } from "@/components/ui/modal";
 import { useModal } from "@/core/hooks/useModal";
-import { formatDate } from "@/core/utils/dateFormater";
+import { formatDate } from "@/core/utils/formatter/dateFormater";
 
 import { PersonelModel } from "../../model/personel";
 import PersonelInfoEditForm from "../forms/PersonelInfoEditForm";

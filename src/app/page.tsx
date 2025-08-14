@@ -1,5 +1,6 @@
 // LandingPage.jsx
 "use client";
+import { useClickTracking } from "@/core/hooks/log/useClickTracker";
 import { useRouter } from "next/navigation";
 import React from "react";
 

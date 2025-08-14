@@ -10,8 +10,8 @@ import { SmoothSpinner } from "@/components/ui/spinner/SmoothSpinner";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { useSignedUrls } from "@/core/hooks/useSignedUrls";
-import { formatDate } from "@/core/utils/dateFormater";
-import { showSuccess } from "@/core/utils/toastHelper";
+import { formatDate } from "@/core/utils/formatter/dateFormater";
+import { showSuccess } from "@/core/utils/toast/toastHelper";
 
 import { PersonelModel } from "../../model/personel";
 import { DeletePersonel } from "../../service/personelService";

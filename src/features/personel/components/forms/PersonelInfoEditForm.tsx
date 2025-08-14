@@ -9,7 +9,7 @@ import Button from "@/components/ui/button/Button";
 import { SmoothSpinner } from "@/components/ui/spinner/SmoothSpinner";
 import { useFormErrors } from "@/core/context/FormErrorContext";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { showSuccess } from "@/core/utils/toastHelper";
+import { showSuccess } from "@/core/utils/toast/toastHelper";
 
 import { UpdatePersonel } from "../../service/personelService";
 import { usePersonelStore } from "../../store/usePersonelStore";

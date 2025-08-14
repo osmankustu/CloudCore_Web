@@ -9,8 +9,8 @@ import { Modal } from "@/components/ui/modal";
 import { SmoothSpinner } from "@/components/ui/spinner/SmoothSpinner";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { formatDate } from "@/core/utils/dateFormater";
-import { showSuccess } from "@/core/utils/toastHelper";
+import { formatDate } from "@/core/utils/formatter/dateFormater";
+import { showSuccess } from "@/core/utils/toast/toastHelper";
 
 import { IndividualCustomerModel } from "../../model/IndividualCustomer";
 import { DeleteIndividualCustomer } from "../../service/individualCustomerService";

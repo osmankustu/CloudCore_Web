@@ -10,8 +10,8 @@ import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components
 import { rowVariant, tableFadeVariant } from "@/core/constants/constants.animate";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { useSignedUrls } from "@/core/hooks/useSignedUrls";
-import { formatDate } from "@/core/utils/dateFormater";
-import { showError, showSuccess } from "@/core/utils/toastHelper";
+import { formatDate } from "@/core/utils/formatter/dateFormater";
+import { showError, showSuccess } from "@/core/utils/toast/toastHelper";
 
 import { DeleteDocument } from "../../service/DocumentService";
 import { useDocumentStore } from "../../store/useDocumentStore";

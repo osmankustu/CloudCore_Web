@@ -14,8 +14,8 @@ import { rowVariant } from "@/core/constants/constants.animate";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { PageRequest } from "@/core/models/requests/PageRequest";
-import { formatDate } from "@/core/utils/dateFormater";
-import { QueryParserForPageRequest } from "@/core/utils/queryParser";
+import { formatDate } from "@/core/utils/formatter/dateFormater";
+import { QueryParserForPageRequest } from "@/core/utils/formatter/queryParser";
 
 import { usePersonelStore } from "../../store/usePersonelStore";
 import PersonelAddForm from "../forms/PersonelAddForm";
