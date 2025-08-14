@@ -15,7 +15,9 @@ const page = () => {
     <div>
       <PageBreadcrumb pageTitle={"Döküman Görüntüleyici"} />
       <div>
-        <DocumentViewer />
+        <Suspense fallback={<Spinner />}>
+          <DocumentViewer />
+        </Suspense>
       </div>
     </div>
   );
