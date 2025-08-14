@@ -1,13 +1,8 @@
 "use client";
-
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import dynamic from "next/dynamic";
-const DocumentViewer = dynamic(
-  () => import("@/features/document/components/cards/documentViewer"),
-  { ssr: false }, // <--- SSR kapalı
-);
+import DocumentViewer from "@/features/document/components/cards/documentViewer";
 
-const page = () => {
+const page = ({ params }: any) => {
   return (
     <div>
       <PageBreadcrumb pageTitle={"Döküman Görüntüleyici"} />

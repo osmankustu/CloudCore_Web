@@ -15,7 +15,7 @@ export class AppLogger {
   private readonly batchInterval = 3000;
 
   constructor() {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "production") {
       setInterval(() => this.sendBatch(), this.batchInterval);
     }
   }
@@ -29,7 +29,7 @@ export class AppLogger {
       timestamp: new Date().toISOString(),
     };
 
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "production") {
       this.queue.push(logEntry);
     } else {
       console[level]?.(message, meta);

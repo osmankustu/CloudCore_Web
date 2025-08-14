@@ -32,11 +32,8 @@ const DocumentsTable = ({ onClose }: { onClose: () => void }) => {
     ) {
       return showError(fileType + " " + "dosya türü tarayıcıda açılamıyor lütfen indiriniz.");
     }
-
-    window.open(
-      "/management/document-viewer?fileType=" + fileType + "&url=" + encodeURIComponent(fileUrl),
-      "_blank",
-    );
+    var url = encodeURIComponent(fileUrl);
+    window.open("/management/document-viewer?fileType=" + fileType + "&url=" + url, "_blank");
   };
 
   const handleDelete = async (documentId: string, activityId: string) => {
