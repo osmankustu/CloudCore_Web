@@ -2,7 +2,7 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import DocumentViewer from "@/features/document/components/cards/documentViewer";
 
-const page = ({ params }: any) => {
+const page = () => {
   return (
     <div>
       <PageBreadcrumb pageTitle={"Döküman Görüntüleyici"} />

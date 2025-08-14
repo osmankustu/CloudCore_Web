@@ -8,7 +8,7 @@ export default function DocumentViewer() {
   const fileType = String(searchParams?.get("fileType") ?? "");
   const url = decodeURIComponent(String(searchParams?.get("url") ?? ""));
 
-  if (!url && fileType) return <div>Document not selected</div>;
+  if (!url) return <div>Document not selected</div>;
 
   if (fileType === "application/pdf") {
     return (
