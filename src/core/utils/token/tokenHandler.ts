@@ -6,7 +6,7 @@ import {
   GetNameidentifier,
   GetPersonelId,
   GetRoleClaims,
-} from "./claims/claimExtension";
+} from "../claims/claimExtension";
 
 export function GetTokenInIdentityId(): string {
   const token = GetToken();

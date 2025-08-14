@@ -1,23 +1,25 @@
 "use client";
-
-import React, { Suspense } from "react";
-
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import Spinner from "@/components/ui/spinner/Spinner";
+import { Suspense } from "react";
 import dynamic from "next/dynamic";
+import Spinner from "@/components/ui/spinner/Spinner";
 const DocumentViewer = dynamic(
   () => import("@/features/document/components/cards/documentViewer"),
-  { ssr: false }, // <--- SSR kapalı
+  {
+    ssr: false,
+  },
 );
 
 const page = () => {
   return (
-    <div>
-      <PageBreadcrumb pageTitle={"Döküman Görüntüleyici"} />
+    <Suspense fallback={<Spinner />}>
       <div>
-        <DocumentViewer />
+        <PageBreadcrumb pageTitle={"Döküman Görüntüleyici"} />
+        <div>
+          <DocumentViewer />
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 

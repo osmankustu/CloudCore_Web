@@ -14,8 +14,8 @@ import { rowVariant, tableFadeVariant } from "@/core/constants/constants.animate
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { PageRequest } from "@/core/models/requests/PageRequest";
-import { formatDate } from "@/core/utils/dateFormater";
-import { QueryParserForPageRequest } from "@/core/utils/queryParser";
+import { formatDate } from "@/core/utils/formatter/dateFormater";
+import { QueryParserForPageRequest } from "@/core/utils/formatter/queryParser";
 
 import { useServiceStore } from "../../store/useServiceStore";
 import ServiceAddForm from "../Forms/ServiceAddForm";

@@ -7,7 +7,7 @@ import FilterTableButton from "@/components/ui/button/FilterTableButton";
 import { Table, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { DynamicQuery } from "@/core/models/requests/DynamicQuery";
 import { PageRequest } from "@/core/models/requests/PageRequest";
-import { QueryParserForPageRequest } from "@/core/utils/queryParser";
+import { QueryParserForPageRequest } from "@/core/utils/formatter/queryParser";
 import { useServiceStore } from "@/features/service/store/useServiceStore";
 
 import { CorporateCustomerModel } from "../../model/corporateCustomer";

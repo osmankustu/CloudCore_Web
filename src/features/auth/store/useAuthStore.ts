@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import { RemoveToken, SetToken } from "@/core/utils/tokenHandler";
+import { RemoveToken, SetToken } from "@/core/utils/token/tokenHandler";
 
 import { LoginModel } from "../model/LoginModel";
 import { LoginForApp, RevokeToken } from "../service/authService";

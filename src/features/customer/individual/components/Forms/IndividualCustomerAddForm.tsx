@@ -7,7 +7,7 @@ import Label from "@/components/form/Label";
 import Button from "@/components/ui/button/Button";
 import { useFormErrors } from "@/core/context/FormErrorContext";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { showSuccess } from "@/core/utils/toastHelper";
+import { showSuccess } from "@/core/utils/toast/toastHelper";
 
 import { IndividualCustomerAddModel } from "../../model/IndividualCustomer";
 import { AddIndividualCustomer } from "../../service/individualCustomerService";

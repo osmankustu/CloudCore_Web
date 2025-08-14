@@ -5,8 +5,8 @@ import { Modal } from "@/components/ui/modal";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { useModal } from "@/core/hooks/useModal";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { formatDate } from "@/core/utils/dateFormater";
-import { showSuccess } from "@/core/utils/toastHelper";
+import { formatDate } from "@/core/utils/formatter/dateFormater";
+import { showSuccess } from "@/core/utils/toast/toastHelper";
 import ServiceStatusTableIndicator from "@/features/service/components/indicators/ServiceStatusTableIndicator";
 import { ServiceModel } from "@/features/service/model/Service";
 

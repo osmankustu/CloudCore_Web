@@ -1,32 +1,35 @@
 "use client";
+import Spinner from "@/components/ui/spinner/Spinner";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import React from "react";
-import { Document, Page, pdfjs } from "react-pdf";
-
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
-
-export type ViewerProps = {
-  url: string;
-  fileType: string;
-};
+import React, { Suspense } from "react";
 
 export default function DocumentViewer() {
   const searchParams = useSearchParams();
-  const fileType = searchParams?.get("fileType") ?? "";
-  const url = searchParams?.get("url") ?? "";
+  const fileType = String(searchParams?.get("fileType") ?? "xx");
+  const url = decodeURIComponent(String(searchParams?.get("url") ?? "xx"));
 
   if (fileType === "application/pdf") {
     return (
-      <div style={{ height: "80vh", overflow: "auto" }}>
-        <Document file={url}>
-          <Page pageNumber={1} />
-        </Document>
-      </div>
+      <Suspense
+        fallback={
+          <div>
+            <Spinner />
+          </div>
+        }
+      >
+        <div style={{ height: "100vh", overflow: "auto" }}>
+          <iframe src={url} style={{ width: "100%", height: "100%" }}></iframe>
+        </div>
+      </Suspense>
     );
   }
 
   if (fileType.startsWith("image/")) {
-    return <Image src={url} alt="Document" width={100} height={100} />;
+    return (
+      <Suspense fallback={<Spinner />}>
+        <Image src={url} alt="Document" width={100} height={100} />
+      </Suspense>
+    );
   }
 }

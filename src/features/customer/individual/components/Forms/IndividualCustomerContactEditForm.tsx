@@ -8,7 +8,7 @@ import Button from "@/components/ui/button/Button";
 import { SmoothSpinner } from "@/components/ui/spinner/SmoothSpinner";
 import { useFormErrors } from "@/core/context/FormErrorContext";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
-import { showSuccess } from "@/core/utils/toastHelper";
+import { showSuccess } from "@/core/utils/toast/toastHelper";
 
 import { UpdateIndividualCustomer } from "../../service/individualCustomerService";
 import { useIndividualCustomerStore } from "../../store/useIndividualCustomerStore";

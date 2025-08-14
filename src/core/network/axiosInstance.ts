@@ -3,7 +3,7 @@ import nookies from "nookies";
 
 import { RefreshToken } from "@/features/auth/service/authService";
 
-import { GetToken } from "../utils/tokenHandler";
+import { GetToken } from "../utils/token/tokenHandler";
 
 type FailedRequest = {
   resolve: (token: string) => void;

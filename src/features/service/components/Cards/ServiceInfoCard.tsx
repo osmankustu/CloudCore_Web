@@ -2,7 +2,7 @@ import React from "react";
 
 import { Modal } from "@/components/ui/modal";
 import { useModal } from "@/core/hooks/useModal";
-import { formatDate } from "@/core/utils/dateFormater";
+import { formatDate } from "@/core/utils/formatter/dateFormater";
 import { AssignmentModel } from "@/features/assignment/model/Assignment";
 
 import { ServiceModel } from "../../model/Service";
