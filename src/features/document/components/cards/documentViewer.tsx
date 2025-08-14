@@ -5,8 +5,8 @@ import React from "react";
 
 export default function DocumentViewer() {
   const searchParams = useSearchParams();
-  const fileType = String(searchParams?.get("fileType") ?? "");
-  const url = decodeURIComponent(String(searchParams?.get("url") ?? ""));
+  const fileType = String(searchParams?.get("fileType") ?? "xx");
+  const url = decodeURIComponent(String(searchParams?.get("url") ?? "xx"));
 
   if (!url) return <div>Document not selected</div>;
 
