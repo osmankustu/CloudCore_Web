@@ -16,6 +16,7 @@ import { DeleteActivity } from "../../service/ActivityService";
 import { useActivityStore } from "../../store/useActivityStore";
 import ActivityAddForm from "../forms/ActivityAddForm";
 import ActivityEditForm from "../forms/ActivityEditForm";
+import CardDeleteButton from "@/components/ui/button/CardDeleteButton";
 
 const ServiceActivityTable = ({ service }: { service: ServiceModel }) => {
   const { isOpen, openModal, closeModal } = useModal();
@@ -162,9 +163,8 @@ const ServiceActivityTable = ({ service }: { service: ServiceModel }) => {
                   </TableCell>
                   <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
                     <div className="flex items-baseline gap-2">
-                      <Button size="sm" onClick={() => handleDelete(rec.id)}>
-                        Sil
-                      </Button>
+                      <CardDeleteButton onClick={() => handleDelete(rec.id)} text="Sil" />
+
                       <ActivityEditForm key={rec.id} activityId={rec.id} text="Güncelle" />
                     </div>
                   </TableCell>

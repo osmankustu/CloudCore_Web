@@ -5,8 +5,8 @@ import React, { useEffect, useState } from "react";
 
 import Pagination from "@/components/tables/Pagination";
 import Button from "@/components/ui/button/Button";
-import FilterTableButton from "@/components/ui/button/FilterTableButton";
-import TableButton from "@/components/ui/button/TableButton";
+import FilterTableButton from "@/components/ui/button/TableFilterButton";
+import TableButton from "@/components/ui/button/TableAddButton";
 import { Modal } from "@/components/ui/modal";
 import Spinner from "@/components/ui/spinner/Spinner";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";

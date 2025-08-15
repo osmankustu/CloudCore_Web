@@ -21,6 +21,7 @@ import { useServiceStore } from "@/features/service/store/useServiceStore";
 
 import { UpdateActivity } from "../../service/ActivityService";
 import { useActivityStore } from "../../store/useActivityStore";
+import CardUpdateButton from "@/components/ui/button/CardUpdateButton";
 
 const ActivityEditForm = ({
   activityId,
@@ -137,9 +138,7 @@ const ActivityEditForm = ({
   return (
     <>
       <div>
-        <Button className={className} onClick={openModal}>
-          {text}
-        </Button>
+        <CardUpdateButton onClick={openModal} text="Düzenle" />
       </div>
 
       <Modal mode="wait" isOpen={isOpen} onClose={closeModal} className="m-4 max-w-[900px]">

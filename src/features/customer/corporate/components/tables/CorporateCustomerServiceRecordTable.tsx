@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 import Pagination from "@/components/tables/Pagination";
-import FilterTableButton from "@/components/ui/button/FilterTableButton";
+import FilterTableButton from "@/components/ui/button/TableFilterButton";
 import { Table, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { DynamicQuery } from "@/core/models/requests/DynamicQuery";
 import { PageRequest } from "@/core/models/requests/PageRequest";

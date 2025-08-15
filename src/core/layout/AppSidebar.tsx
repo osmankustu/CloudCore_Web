@@ -3,11 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FaCommentDots, FaFileAlt, FaPowerOff } from "react-icons/fa";
-import { IoSettingsOutline } from "react-icons/io5";
-import { IoPersonOutline } from "react-icons/io5";
-import { MdOutlineDashboard } from "react-icons/md";
-import { PiBuildingOffice } from "react-icons/pi";
+import {
+  FcCollapse,
+  FcConferenceCall,
+  FcContacts,
+  FcDepartment,
+  FcDocument,
+  FcLineChart,
+  FcManager,
+  FcNext,
+  FcSettings,
+} from "react-icons/fc";
 
 import { useSidebar } from "@/core/context/SidebarContext";
 
@@ -20,17 +26,20 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <MdOutlineDashboard />,
+    icon: <FcLineChart size={27} />,
     name: "Kontrol Paneli",
     path: "/management",
   },
   {
-    icon: <FaFileAlt />,
-    name: "Servis Kayıtları",
-    path: "/management/services",
+    icon: <FcDocument size={27} />,
+    name: "İş Yönetimi",
+    subItems: [
+      { name: "İş Kayıtları", path: "/management/jobs" },
+      { name: "Servis Kayıtları", path: "/management/services" },
+    ],
   },
   {
-    icon: <IoPersonOutline />,
+    icon: <FcConferenceCall size={27} />,
     name: "Çalışanlar",
     path: "management/employees",
     subItems: [
@@ -39,7 +48,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    icon: <PiBuildingOffice />,
+    icon: <FcContacts size={27} />,
     name: "Müşteriler",
     path: "/management/customers",
     subItems: [
@@ -47,13 +56,9 @@ const navItems: NavItem[] = [
       { name: "Bireysel", path: "/management/customers/individual" },
     ],
   },
+
   {
-    icon: <FaFileAlt />,
-    name: "Raporlar",
-    path: "/reports",
-  },
-  {
-    icon: <IoSettingsOutline />,
+    icon: <FcSettings size={27} />,
     name: "Ayarlar",
     path: "/management/settings",
     subItems: [
@@ -63,40 +68,16 @@ const navItems: NavItem[] = [
       { name: "Geçmiş İşlemlerim", path: "" },
     ],
   },
-  // {
-  //   icon: <GridIcon />,
-  //   name: "Dashboard",
-  //   subItems: [{ name: "Ecommerce", path: "/", pro: false }],
-  // },
-  // {
-  //   icon: <CalenderIcon />,
-  //   name: "Calendar",
-  //   path: "/calendar",
-  // },
-  // {
-  //   icon: <UserCircleIcon />,
-  //   name: "User Profile",
-  //   path: "/profile",
-  // },
-
-  // {
-  //   name: "Forms",
-  //   icon: <ListIcon />,
-  //   subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
-  // },
-  // {
-  //   name: "Tables",
-  //   icon: <TableIcon />,
-  //   subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
-  // },
-  // {
-  //   name: "Pages",
-  //   icon: <PageIcon />,
-  //   subItems: [
-  //     { name: "Blank Page", path: "/blank", pro: false },
-  //     { name: "404 Error", path: "/error-404", pro: false },
-  //   ],
-  // },
+  {
+    icon: <FcManager size={27} />,
+    name: "Hesabım",
+    path: "/management/account",
+  },
+  {
+    icon: <FcDepartment size={27} />,
+    name: "İşletmem",
+    path: "/management/my-business",
+  },
 ];
 
 const othersItems: NavItem[] = [
@@ -162,7 +143,7 @@ const AppSidebar: React.FC = () => {
                 <span className={"menu-item-text"}>{nav.name}</span>
               )}
               {(isExpanded || isHovered || isMobileOpen) && (
-                <FaPowerOff
+                <FcCollapse
                   className={`ml-auto h-5 w-5 transition-transform duration-200 ${
                     openSubmenu?.type === menuType && openSubmenu?.index === index
                       ? "text-brand-500 rotate-180"
@@ -353,7 +334,7 @@ const AppSidebar: React.FC = () => {
                   !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
                 }`}
               >
-                {isExpanded || isHovered || isMobileOpen ? "Menu" : <FaCommentDots />}
+                {isExpanded || isHovered || isMobileOpen ? "Menu" : ""}
               </h2>
               {renderMenuItems(navItems, "main")}
             </div>
@@ -364,7 +345,7 @@ const AppSidebar: React.FC = () => {
                   !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
                 }`}
               >
-                {isExpanded || isHovered || isMobileOpen ? "Others" : <FaCommentDots />}
+                {isExpanded || isHovered || isMobileOpen ? "Others" : ""}
               </h2>
               {renderMenuItems(othersItems, "others")}
             </div>
