@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 import Pagination from "@/components/tables/Pagination";
 import Button from "@/components/ui/button/Button";
-import FilterTableButton from "@/components/ui/button/FilterTableButton";
+import FilterTableButton from "@/components/ui/button/TableFilterButton";
 import { Modal } from "@/components/ui/modal";
 import Spinner from "@/components/ui/spinner/Spinner";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
@@ -19,6 +19,7 @@ import { QueryParserForPageRequest } from "@/core/utils/formatter/queryParser";
 import { useTeamStore } from "../../store/useTeamStore";
 import TeamAddForm from "../forms/TeamAddForm";
 import TeamStatusIndicator from "../Indicators/TeamStatusIndicator";
+import TableAddButton from "@/components/ui/button/TableAddButton";
 
 const TeamsTable = () => {
   const searchParams = useSearchParams();
@@ -83,12 +84,7 @@ const TeamsTable = () => {
             />
           </div>
 
-          <button
-            className="text-theme-sm shadow-theme-xs inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-            onClick={openModal}
-          >
-            Ekip Ekle
-          </button>
+          <TableAddButton text="Ekip Oluştur" onClick={openModal} />
         </div>
         <div className="max-w-full overflow-x-auto">
           <Table>

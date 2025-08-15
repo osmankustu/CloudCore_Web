@@ -15,6 +15,8 @@ import { showError, showSuccess } from "@/core/utils/toast/toastHelper";
 
 import { DeleteDocument } from "../../service/DocumentService";
 import { useDocumentStore } from "../../store/useDocumentStore";
+import CardDeleteButton from "@/components/ui/button/CardDeleteButton";
+import { text } from "stream/consumers";
 const DocumentViewer = dynamic(() => import("../cards/documentViewer"), { ssr: false });
 
 const DocumentsTable = ({ onClose }: { onClose: () => void }) => {
@@ -235,14 +237,12 @@ const DocumentsTable = ({ onClose }: { onClose: () => void }) => {
                                       {formatDate(document.updateAt)}
                                     </TableCell>
                                     <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
-                                      <Button
-                                        key={document.id}
+                                      <CardDeleteButton
                                         onClick={() =>
                                           handleDelete(document.id, document.activityId)
                                         }
-                                      >
-                                        Sil
-                                      </Button>
+                                        text="Sil"
+                                      />
                                     </TableCell>
                                   </motion.tr>
                                 ))}

@@ -2,7 +2,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-import FilterTableButton from "@/components/ui/button/FilterTableButton";
+import FilterTableButton from "@/components/ui/button/TableFilterButton";
 import { Table, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { PageRequest } from "@/core/models/requests/PageRequest";
