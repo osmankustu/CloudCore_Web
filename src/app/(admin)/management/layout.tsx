@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { FormErrorProvider } from "@/core/context/FormErrorContext";
 import { useSidebar } from "@/core/context/SidebarContext";
 import AppHeader from "@/core/layout/AppHeader";
@@ -8,9 +8,17 @@ import AppSidebar from "@/core/layout/AppSidebar";
 import Backdrop from "@/core/layout/Backdrop";
 import { useRouteTracking } from "@/core/hooks/log/useRouteTracking";
 import { usePerformanceTracking } from "@/core/hooks/log/usePerformanceTracking";
+import { useUserStore } from "@/features/account/store/useUserStore";
+import { GetToken } from "@/core/utils/token/tokenHandler";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const { isExpanded, isHovered, isMobileOpen } = useSidebar();
+  const { fetchAccountRoles } = useUserStore();
+  useEffect(() => {
+    if (GetToken()) {
+      fetchAccountRoles();
+    }
+  }, []);
   // useRouteTracking();
   // usePerformanceTracking();
 

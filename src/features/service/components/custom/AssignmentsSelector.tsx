@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Select from "react-select";
 
-import { PersonelSelectModel } from "@/features/personel/model/personel";
-import { TeamSelectModel } from "@/features/team/model/team";
+import { PersonelSelectModel } from "@/features/employee/personel/model/personel";
+import { TeamSelectModel } from "@/features/employee/team/model/team";
 
 type Option = {
   value: string;

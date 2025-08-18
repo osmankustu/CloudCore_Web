@@ -138,7 +138,7 @@ const ActivityEditForm = ({
   return (
     <>
       <div>
-        <CardUpdateButton onClick={openModal} text="Düzenle" />
+        <CardUpdateButton disabled={activity?.personelId == ""} onClick={openModal} text={text} />
       </div>
 
       <Modal mode="wait" isOpen={isOpen} onClose={closeModal} className="m-4 max-w-[900px]">
@@ -150,7 +150,6 @@ const ActivityEditForm = ({
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="no-scrollbar relative w-full max-w-[900px] overflow-y-auto rounded-3xl bg-white p-4 lg:p-11 dark:bg-gray-900"
         >
-          {" "}
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
               Aktivite Güncelle

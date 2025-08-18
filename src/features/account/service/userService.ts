@@ -1,6 +1,6 @@
 import axiosInstance from "@/core/network/axiosInstance";
 
-import { PersonelUpdateModel } from "../../personel/model/personel";
+import { PersonelUpdateModel } from "../../employee/personel/model/personel";
 import { IdentityUserChangePasswordModel } from "../model/user";
 
 //For tanent based User query tenantId

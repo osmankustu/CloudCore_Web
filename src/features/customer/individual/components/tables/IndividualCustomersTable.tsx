@@ -19,6 +19,9 @@ import { QueryParserForPageRequest } from "@/core/utils/formatter/queryParser";
 
 import { useIndividualCustomerStore } from "../../store/useIndividualCustomerStore";
 import IndividualCustomerAddForm from "../Forms/IndividualCustomerAddForm";
+import { FcSearch } from "react-icons/fc";
+import { usePermission } from "@/core/hooks/auth/usePermission";
+import customerPermissions from "@/features/customer/constants/customerPermissions";
 
 const IndividualCustomersTable = () => {
   const searchParams = useSearchParams();
@@ -37,6 +40,8 @@ const IndividualCustomersTable = () => {
     setIsDynamic,
     fetchIndividualOptions,
   } = useIndividualCustomerStore();
+
+  const { hasPermission } = usePermission();
 
   const handleChangeSearchBox = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsDynamic(true);
@@ -76,21 +81,32 @@ const IndividualCustomersTable = () => {
               onClick={() => setVisible(!visible)}
             />
 
-            <input
-              type="text"
-              name="value"
-              placeholder="Müşteri adı ile ara.."
-              className="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-200 bg-transparent py-2.5 pr-14 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[430px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30"
-              onChange={handleChangeSearchBox}
-            />
-          </div>
+            <div className="relative">
+              <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2">
+                <FcSearch size={25} />
+              </span>
+              <input
+                onChange={handleChangeSearchBox}
+                type="text"
+                placeholder="Müşteri ara..."
+                className="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-200 bg-transparent py-2.5 pr-14 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[430px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30"
+              />
 
-          <TableButton
-            text={"Müşteri Oluştur"}
-            onClick={() => {
-              openModal();
-            }}
-          />
+              <button className="absolute top-1/2 right-2.5 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400">
+                <span> ⌘ </span>
+                <span> K </span>
+              </button>
+            </div>
+          </div>
+          {hasPermission(customerPermissions.create) ||
+          hasPermission(customerPermissions.allPermissions) ? (
+            <TableButton
+              text={"Müşteri Oluştur"}
+              onClick={() => {
+                openModal();
+              }}
+            />
+          ) : null}
         </div>
 
         <div className="max-w-full overflow-x-auto">

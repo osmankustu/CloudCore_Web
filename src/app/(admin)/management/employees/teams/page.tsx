@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import Spinner from "@/components/ui/spinner/Spinner";
-import TeamsTable from "@/features/team/components/tables/TeamsTable";
+import TeamsTable from "@/features/employee/team/components/tables/TeamsTable";
 
 const page = () => {
   return (

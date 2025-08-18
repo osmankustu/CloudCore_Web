@@ -14,6 +14,8 @@ import { showSuccess } from "@/core/utils/toast/toastHelper";
 import { CorporateCustomerModel } from "../../model/corporateCustomer";
 import { DeleteCorporateCustomer } from "../../service/corporateCustomerService";
 import CardDeleteButton from "@/components/ui/button/CardDeleteButton";
+import { usePermission } from "@/core/hooks/auth/usePermission";
+import customerPermissions from "@/features/customer/constants/customerPermissions";
 
 const CorporateCustomerMetaCard = ({
   corporateCustomer,
@@ -25,6 +27,7 @@ const CorporateCustomerMetaCard = ({
   const { isOpen, openModal, closeModal } = useModal();
   const { run, isLoading } = useRequestAction();
   const router = useRouter();
+  const { hasPermission } = usePermission();
 
   const handleDelete = async () => {
     run(async () => {
@@ -91,7 +94,10 @@ const CorporateCustomerMetaCard = ({
               >
                 Notlar
               </button>
-              <CardDeleteButton onClick={openModal} text="Sil" />
+              {hasPermission(customerPermissions.delete) ||
+              hasPermission(customerPermissions.allPermissions) ? (
+                <CardDeleteButton onClick={openModal} text="Sil" />
+              ) : null}
             </div>
           </div>
         </div>

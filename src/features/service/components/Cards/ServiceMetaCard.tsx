@@ -14,6 +14,8 @@ import { showSuccess } from "@/core/utils/toast/toastHelper";
 import { ServiceModel } from "../../model/Service";
 import { DeleteService } from "../../service/ServiceService";
 import CardDeleteButton from "@/components/ui/button/CardDeleteButton";
+import { usePermission } from "@/core/hooks/auth/usePermission";
+import servicePermissions from "../../constants/servicePermissions.const";
 
 const ServiceMetaCard = ({
   service,
@@ -26,6 +28,7 @@ const ServiceMetaCard = ({
   const router = useRouter();
   const { clearErrors } = useFormErrors();
   const { isOpen, openModal, closeModal } = useModal();
+  const { hasPermission } = usePermission();
   const handleDelete = async () => {
     run(async () => {
       const response = await DeleteService(service.id);
@@ -75,8 +78,10 @@ const ServiceMetaCard = ({
               >
                 Servis Aktiviteleri
               </button>
-
-              <CardDeleteButton text="Sil" onClick={openModal} />
+              {hasPermission(servicePermissions.delete) ||
+              hasPermission(servicePermissions.allPermissions) ? (
+                <CardDeleteButton text="Sil" onClick={openModal} />
+              ) : null}
             </div>
           </div>
         </div>

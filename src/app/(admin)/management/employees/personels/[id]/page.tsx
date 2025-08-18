@@ -3,11 +3,11 @@ import React, { Suspense } from "react";
 
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import Spinner from "@/components/ui/spinner/Spinner";
-import PersonelCard from "@/features/personel/components/cards/PersonelCard";
+import PersonelCard from "@/features/employee/personel/components/cards/PersonelCard";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const page = async ({ params }: any) => {
-  const id = params.id;
+const page = ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = React.use(params);
   return (
     <div>
       <PageBreadcrumb pageTitle="Personel Bilgileri" />
