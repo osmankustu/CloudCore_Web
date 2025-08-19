@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import { RemoveToken, SetToken } from "@/core/utils/token/tokenHandler";
+import { GetUserRoles, RemoveToken, SetRoles, SetToken } from "@/core/utils/token/tokenHandler";
 
 import { LoginModel } from "../model/LoginModel";
 import { LoginForApp, RevokeToken } from "../service/authService";
@@ -17,7 +17,7 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    set => ({
+    (set, get) => ({
       token: null,
 
       login: async loginModel => {

@@ -17,12 +17,16 @@ import { useActivityStore } from "../../store/useActivityStore";
 import ActivityAddForm from "../forms/ActivityAddForm";
 import ActivityEditForm from "../forms/ActivityEditForm";
 import CardDeleteButton from "@/components/ui/button/CardDeleteButton";
+import { usePermission } from "@/core/hooks/auth/usePermission";
+import activityPermissions from "../../constants/activityPermissions.const";
+import TableAddButton from "@/components/ui/button/TableAddButton";
+import documentPermissions from "@/features/document/constants/documentPermissions.const";
 
 const ServiceActivityTable = ({ service }: { service: ServiceModel }) => {
   const { isOpen, openModal, closeModal } = useModal();
   const { poolActivities, fetchPoolActivities } = useActivityStore();
   const { run } = useRequestAction();
-
+  const { hasPermission } = usePermission();
   useEffect(() => {
     if (service) {
       run(async () => {
@@ -54,19 +58,19 @@ const ServiceActivityTable = ({ service }: { service: ServiceModel }) => {
           </div>
 
           <div className="flex items-center gap-3">
-            <RecordDocumentModal
-              service={service}
-              className="text-theme-sm shadow-theme-xs inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-              text="Tüm Dökümanları Görüntüle"
-            />
-            <button
-              className="text-theme-sm shadow-theme-xs inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-              onClick={() => {
-                openModal();
-              }}
-            >
-              Aktivite Oluştur
-            </button>
+            {hasPermission(documentPermissions.read) ||
+            hasPermission(documentPermissions.allPermissions) ? (
+              <RecordDocumentModal
+                service={service}
+                className="text-theme-sm shadow-theme-xs inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
+                text="Tüm Dökümanları Görüntüle"
+              />
+            ) : null}
+
+            {hasPermission(activityPermissions.create) ||
+            hasPermission(activityPermissions.allPermissions) ? (
+              <TableAddButton text="Aktivite Oluştur" onClick={openModal} />
+            ) : null}
           </div>
         </div>
 
@@ -100,13 +104,15 @@ const ServiceActivityTable = ({ service }: { service: ServiceModel }) => {
                 >
                   Durum Güncellemesi
                 </TableCell>
-
-                <TableCell
-                  isHeader
-                  className="text-theme-xs py-3 text-start font-medium text-gray-500 dark:text-gray-400"
-                >
-                  Dökümanlar
-                </TableCell>
+                {hasPermission(documentPermissions.read) ||
+                hasPermission(documentPermissions.allPermissions) ? (
+                  <TableCell
+                    isHeader
+                    className="text-theme-xs py-3 text-start font-medium text-gray-500 dark:text-gray-400"
+                  >
+                    Dökümanlar
+                  </TableCell>
+                ) : null}
 
                 <TableCell
                   isHeader
@@ -115,12 +121,15 @@ const ServiceActivityTable = ({ service }: { service: ServiceModel }) => {
                   Tarih
                 </TableCell>
 
-                <TableCell
-                  isHeader
-                  className="text-theme-xs py-3 text-start font-medium text-gray-500 dark:text-gray-400"
-                >
-                  İşlemler
-                </TableCell>
+                {hasPermission(activityPermissions.update) ||
+                hasPermission(activityPermissions.allPermissions) ? (
+                  <TableCell
+                    isHeader
+                    className="text-theme-xs py-3 text-start font-medium text-gray-500 dark:text-gray-400"
+                  >
+                    İşlemler
+                  </TableCell>
+                ) : null}
               </TableRow>
             </TableHeader>
 
@@ -149,23 +158,33 @@ const ServiceActivityTable = ({ service }: { service: ServiceModel }) => {
                       serviceStatus={rec.serviceStatus}
                     />
                   </TableCell>
-                  <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
-                    {
-                      <ActivityDocumentModal
-                        className="text-theme-sm shadow-theme-xs inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-                        text="Görüntüle"
-                        activity={rec}
-                      />
-                    }
-                  </TableCell>
+                  {hasPermission(documentPermissions.read) ||
+                  hasPermission(documentPermissions.allPermissions) ? (
+                    <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
+                      {
+                        <ActivityDocumentModal
+                          className="text-theme-sm shadow-theme-xs inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
+                          text="Görüntüle"
+                          activity={rec}
+                        />
+                      }
+                    </TableCell>
+                  ) : null}
+
                   <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
                     {formatDate(rec.createAt)}
                   </TableCell>
                   <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
                     <div className="flex items-baseline gap-2">
-                      <CardDeleteButton onClick={() => handleDelete(rec.id)} text="Sil" />
+                      {hasPermission(activityPermissions.delete) ||
+                      hasPermission(activityPermissions.allPermissions) ? (
+                        <CardDeleteButton onClick={() => handleDelete(rec.id)} text="Sil" />
+                      ) : null}
 
-                      <ActivityEditForm key={rec.id} activityId={rec.id} text="Güncelle" />
+                      {hasPermission(activityPermissions.update) ||
+                      hasPermission(activityPermissions.allPermissions) ? (
+                        <ActivityEditForm key={rec.id} activityId={rec.id} text="Güncelle" />
+                      ) : null}
                     </div>
                   </TableCell>
                 </TableRow>

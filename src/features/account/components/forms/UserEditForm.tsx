@@ -8,7 +8,7 @@ import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { useUserStore } from "../../store/useUserStore";
 import { UpdatePersonelFromTenant } from "../../service/userService";
 import { showSuccess } from "@/core/utils/toast/toastHelper";
-import { PersonelDatePicker } from "@/features/personel/components/custom/PersonelDatePicker";
+import { PersonelDatePicker } from "@/features/employee/personel/components/custom/PersonelDatePicker";
 import { SmoothSpinner } from "@/components/ui/spinner/SmoothSpinner";
 
 const UserEditForm = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {

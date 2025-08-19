@@ -22,6 +22,8 @@ import ServiceAddForm from "../Forms/ServiceAddForm";
 import PriortyStatusIndicator from "../indicators/PriortyStatusIndicator";
 import ServiceStatusTableIndicator from "../indicators/ServiceStatusTableIndicator";
 import { FcSearch } from "react-icons/fc";
+import { usePermission } from "@/core/hooks/auth/usePermission";
+import servicePermissions from "../../constants/servicePermissions.const";
 
 const ServicesTable = () => {
   const searchParams = useSearchParams();
@@ -39,6 +41,8 @@ const ServicesTable = () => {
     setIsDynamic,
     fetchServices,
   } = useServiceStore();
+
+  const { hasPermission } = usePermission();
 
   const handleChangeSearchBox = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsDynamic(true);
@@ -89,13 +93,15 @@ const ServicesTable = () => {
               </button>
             </div>
           </div>
-
-          <TableButton
-            text={"Servis Kaydı Oluştur"}
-            onClick={() => {
-              openModal();
-            }}
-          />
+          {hasPermission(servicePermissions.create) ||
+          hasPermission(servicePermissions.allPermissions) ? (
+            <TableButton
+              text={"Servis Kaydı Oluştur"}
+              onClick={() => {
+                openModal();
+              }}
+            />
+          ) : null}
         </div>
 
         {/* Table */}
@@ -172,7 +178,7 @@ const ServicesTable = () => {
                     </TableCell>
                   </TableRow>
                 </TableBody>
-              ) : !services?.items ? (
+              ) : services?.count == 0 ? (
                 <TableBody key="data">
                   <TableRow>
                     <TableCell colSpan={10}>

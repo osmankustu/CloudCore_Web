@@ -19,8 +19,8 @@ export function GetPersonelId(token?: object): string {
 
 export function GetRoleClaims(token: object): string[] {
   const payload = token as TokenPayload;
-
-  return payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+  const roles = payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] as String[];
+  return roles?.map(role => role.toLowerCase());
 }
 
 export function GetClaimName(token: object): string {

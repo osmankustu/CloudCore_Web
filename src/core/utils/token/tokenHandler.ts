@@ -66,6 +66,10 @@ export function SetToken(token: string) {
   });
 }
 
+export function SetRoles(roles: string[]) {
+  localStorage.setItem("roles", JSON.stringify(roles));
+}
+
 export function GetRefreshToken() {
   const cookies = nookies.get(undefined, "refreshToken");
   return cookies.refreshToken;

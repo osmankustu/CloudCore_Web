@@ -1,9 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import { PersonelModel, PersonelUpdateModel } from "../../personel/model/personel";
+import { PersonelModel, PersonelUpdateModel } from "../../employee/personel/model/personel";
 import { IdentityUserChangePasswordModel, IdentityUserModel } from "../model/user";
 import { GetIdentityUser, GetPersonelFromTenant } from "../service/userService";
+import { GetUserRoles } from "@/core/utils/token/tokenHandler";
 
 interface UserState {
   user: PersonelModel | null;
@@ -15,11 +16,14 @@ interface UserState {
 
   identityUser: IdentityUserModel | null;
   fetchIdentityUser: () => Promise<void>;
+  roles: string[] | null;
 
   changePasswordForm: IdentityUserChangePasswordModel;
 
   setFormField: (field: keyof IdentityUserChangePasswordModel, value: string) => void;
   setFormData: (data: IdentityUserChangePasswordModel) => void;
+
+  fetchAccountRoles: () => string[];
 
   isLoading: boolean;
 }
@@ -29,6 +33,7 @@ export const useUserStore = create<UserState>()(
     set => ({
       user: null,
       identityUser: null,
+      roles: null,
       isLoading: false,
 
       fetchUser: async () => {
@@ -82,6 +87,12 @@ export const useUserStore = create<UserState>()(
         }
       },
 
+      fetchAccountRoles: () => {
+        var roles = GetUserRoles();
+        set({ roles: roles });
+        return roles;
+      },
+
       changePasswordForm: {
         newPassword: "",
         password: "",
@@ -101,7 +112,10 @@ export const useUserStore = create<UserState>()(
     }),
     {
       name: "login-user", // localStorage anahtarı
-      partialize: state => ({ user: state.user, identityUser: state.identityUser }), // sadece `user` saklansın
+      partialize: state => ({
+        user: state.user,
+        identityUser: state.identityUser,
+      }), // sadece `user` saklansın
     },
   ),
 );

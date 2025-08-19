@@ -15,8 +15,8 @@ import { showSuccess } from "@/core/utils/toast/toastHelper";
 import { useAssignmentStore } from "@/features/assignment/store/useAssignmentStore";
 import { useCorporateCustomerStore } from "@/features/customer/corporate/store/useCorporateCustomerStore";
 import { useIndividualCustomerStore } from "@/features/customer/individual/store/useIndividualCustomerStore";
-import { usePersonelStore } from "@/features/personel/store/usePersonelStore";
-import { useTeamStore } from "@/features/team/store/useTeamStore";
+import { usePersonelStore } from "@/features/employee/personel/store/usePersonelStore";
+import { useTeamStore } from "@/features/employee/team/store/useTeamStore";
 
 import { UpdateService } from "../../service/ServiceService";
 import { useServiceStore } from "../../store/useServiceStore";

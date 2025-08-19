@@ -14,8 +14,8 @@ import { useRequestAction } from "@/core/hooks/useRequestAction";
 import { getGoogleMapsLink } from "@/core/utils/formatter/mapsHelper";
 import { useCorporateCustomerStore } from "@/features/customer/corporate/store/useCorporateCustomerStore";
 import { useIndividualCustomerStore } from "@/features/customer/individual/store/useIndividualCustomerStore";
-import { usePersonelStore } from "@/features/personel/store/usePersonelStore";
-import { useTeamStore } from "@/features/team/store/useTeamStore";
+import { usePersonelStore } from "@/features/employee/personel/store/usePersonelStore";
+import { useTeamStore } from "@/features/employee/team/store/useTeamStore";
 
 import { ServiceAddModel } from "../../model/Service";
 import { AddService } from "../../service/ServiceService";

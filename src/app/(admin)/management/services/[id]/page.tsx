@@ -6,8 +6,8 @@ import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import Spinner from "@/components/ui/spinner/Spinner";
 import ServiceCard from "@/features/service/components/Cards/ServiceCard";
 
-const page = async ({ params }: any) => {
-  const id = params.id;
+const page = ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = React.use(params);
   return (
     <div>
       <PageBreadcrumb pageTitle="Servis Detayı" />

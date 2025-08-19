@@ -24,7 +24,7 @@ export default function SignInForm() {
   const [isChecked, setIsChecked] = useState(false);
   const { isOpen, openModal, closeModal } = useModal();
   const [title, setTitle] = useState<string>();
-  const { fetchUser, fetchIdentityUser } = useUserStore();
+  const { fetchAccountRoles, fetchUser, fetchIdentityUser } = useUserStore();
   const { login } = useAuthStore();
 
   const [loginForm, setLoginForm] = useState<LoginModel>({
@@ -47,6 +47,8 @@ export default function SignInForm() {
         case "success":
           await fetchUser();
           await fetchIdentityUser();
+          //fetchAccountRoles();
+
           router.replace(callbackUrl);
           break;
 

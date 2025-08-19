@@ -4,7 +4,7 @@ import Button from "@/components/ui/button/Button";
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { usePersonelStore } from "@/features/personel/store/usePersonelStore";
+import { usePersonelStore } from "@/features/employee/personel/store/usePersonelStore";
 import { useFormErrors } from "@/core/context/FormErrorContext";
 import { useUserStore } from "../../store/useUserStore";
 import { useRequestAction } from "@/core/hooks/useRequestAction";

@@ -10,6 +10,8 @@ import ServiceEditForm from "../Forms/ServiceEditForm";
 import PriortyStatusIndicator from "../indicators/PriortyStatusIndicator";
 import ServiceStatusTableIndicator from "../indicators/ServiceStatusTableIndicator";
 import CardUpdateButton from "@/components/ui/button/CardUpdateButton";
+import { usePermission } from "@/core/hooks/auth/usePermission";
+import servicePermissions from "../../constants/servicePermissions.const";
 
 const ServiceInfoCard = ({
   service,
@@ -19,6 +21,7 @@ const ServiceInfoCard = ({
   assignment: AssignmentModel;
 }) => {
   const { isOpen, openModal, closeModal } = useModal();
+  const { hasPermission } = usePermission();
   return (
     <div>
       <div className="mt-5 rounded-2xl border border-gray-200 p-5 lg:p-6 dark:border-gray-800">
@@ -118,7 +121,10 @@ const ServiceInfoCard = ({
               </div>
             </div>
           </div>
-          <CardUpdateButton text="Düzenle" onClick={openModal} />
+          {hasPermission(servicePermissions.update) ||
+          hasPermission(servicePermissions.allPermissions) ? (
+            <CardUpdateButton text="Düzenle" onClick={openModal} />
+          ) : null}
         </div>
       </div>
 

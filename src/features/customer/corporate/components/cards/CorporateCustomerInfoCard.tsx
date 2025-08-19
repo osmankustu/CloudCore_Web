@@ -6,6 +6,8 @@ import { useModal } from "@/core/hooks/useModal";
 import { CorporateCustomerModel } from "../../model/corporateCustomer";
 import CorporateCustomerInfoEditForm from "../forms/CorporateCustomerInfoEditForm";
 import CardUpdateButton from "@/components/ui/button/CardUpdateButton";
+import { usePermission } from "@/core/hooks/auth/usePermission";
+import customerPermissions from "@/features/customer/constants/customerPermissions";
 
 const CorporateCustomerInfoCard = ({
   corporateCustomer,
@@ -13,6 +15,7 @@ const CorporateCustomerInfoCard = ({
   corporateCustomer: CorporateCustomerModel | undefined;
 }) => {
   const { isOpen, openModal, closeModal } = useModal();
+  const { hasPermission } = usePermission();
 
   return (
     <div className="mt-5 rounded-2xl border border-gray-200 p-5 lg:p-6 dark:border-gray-800">
@@ -63,8 +66,10 @@ const CorporateCustomerInfoCard = ({
             </div>
           </div>
         </div>
-
-        <CardUpdateButton onClick={openModal} text="Düzenle" />
+        {hasPermission(customerPermissions.update) ||
+        hasPermission(customerPermissions.allPermissions) ? (
+          <CardUpdateButton onClick={openModal} text="Düzenle" />
+        ) : null}
       </div>
 
       <Modal mode="wait" isOpen={isOpen} onClose={closeModal} className="m-4 max-w-[900px]">

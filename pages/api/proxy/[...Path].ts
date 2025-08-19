@@ -23,7 +23,7 @@ proxy.on("proxyReq", (proxyReq, req) => {
 });
 
 proxy.on("error", (err, req, res) => {
-  console.error("❌ Proxy Error:", err);
+  // console.error("❌ Proxy Error:", err);
 
   // res Socket olabilir, headersSent olmayabilir, o yüzden kontrol et
   if (res && "headersSent" in res && !(res as ServerResponse).headersSent) {
@@ -37,7 +37,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     // ✅ backend URL'yi düzgün kur
     const targetUrl = `${process.env.API_URL}${req.url?.replace("/api/proxy", "")}`;
 
-    console.log("📡 Gönderilen Backend URL:", targetUrl);
+    //console.log("📡 Gönderilen Backend URL:", targetUrl);
     // console.log('Request-Type: ',req.headers['content-type'])
     // console.log("_________________________________________________________________________________________")
 
