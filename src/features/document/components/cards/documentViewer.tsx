@@ -28,7 +28,9 @@ export default function DocumentViewer() {
   if (fileType.startsWith("image/")) {
     return (
       <Suspense fallback={<Spinner />}>
-        <Image src={url} alt="Document" width={100} height={100} />
+        <div className="items-center">
+          <Image src={url} alt="Document" width={800} height={600} />
+        </div>
       </Suspense>
     );
   }

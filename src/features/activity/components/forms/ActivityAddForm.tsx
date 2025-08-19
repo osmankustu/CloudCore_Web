@@ -22,6 +22,7 @@ import { ActivityAddModel } from "../../model/Activity";
 import { AddActivity } from "../../service/ActivityService";
 import { useActivityStore } from "../../store/useActivityStore";
 import { showSuccess } from "@/core/utils/toast/toastHelper";
+import { useUserStore } from "@/features/account/store/useUserStore";
 
 const ActivityAddForm = ({
   isOpen,
@@ -36,11 +37,12 @@ const ActivityAddForm = ({
   const { errors, clearErrors } = useFormErrors();
   const { fetchPoolActivities } = useActivityStore();
   const { fetchService } = useServiceStore();
+  const { user } = useUserStore();
   const [formData, setFormData] = useState<ActivityAddModel>({
     servicePoolId: service.poolId,
     serviceStatus: "",
     updateDescription: "",
-    personelId: GetTokenInPersonelId(),
+    personelId: user!.id,
   });
 
   //File Inputs

@@ -17,6 +17,7 @@ import { DeleteDocument } from "../../service/DocumentService";
 import { useDocumentStore } from "../../store/useDocumentStore";
 import CardDeleteButton from "@/components/ui/button/CardDeleteButton";
 import { text } from "stream/consumers";
+import CardDownloadButton from "@/components/ui/button/CardDownloadButton";
 const DocumentViewer = dynamic(() => import("../cards/documentViewer"), { ssr: false });
 
 const DocumentsTable = ({ onClose }: { onClose: () => void }) => {
@@ -91,12 +92,7 @@ const DocumentsTable = ({ onClose }: { onClose: () => void }) => {
                             >
                               Oluşturma Tarihi
                             </TableCell>
-                            <TableCell
-                              isHeader
-                              className="text-theme-xs py-3 text-start font-medium text-gray-500 dark:text-gray-400"
-                            >
-                              Güncellenme Tarihi
-                            </TableCell>
+
                             <TableCell
                               isHeader
                               className="text-theme-xs py-3 text-start font-medium text-gray-500 dark:text-gray-400"
@@ -233,16 +229,17 @@ const DocumentsTable = ({ onClose }: { onClose: () => void }) => {
                                     <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
                                       {formatDate(document.createAt)}
                                     </TableCell>
+
                                     <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
-                                      {formatDate(document.updateAt)}
-                                    </TableCell>
-                                    <TableCell className="text-theme-sm py-3 text-gray-500 dark:text-gray-400">
-                                      <CardDeleteButton
-                                        onClick={() =>
-                                          handleDelete(document.id, document.activityId)
-                                        }
-                                        text="Sil"
-                                      />
+                                      <div className="flex gap-2">
+                                        <CardDownloadButton text="İndir" onClick={() => {}} />
+                                        <CardDeleteButton
+                                          onClick={() =>
+                                            handleDelete(document.id, document.activityId)
+                                          }
+                                          text="Sil"
+                                        />
+                                      </div>
                                     </TableCell>
                                   </motion.tr>
                                 ))}
